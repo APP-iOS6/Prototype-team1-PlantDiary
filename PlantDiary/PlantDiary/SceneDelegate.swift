@@ -16,13 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house.fill"), tag: 0)
         
-        let diaryViewController = UINavigationController()
+        let diaryViewController = UINavigationController(rootViewController: DiaryViewController())
         diaryViewController.tabBarItem = UITabBarItem(title: "다이어리", image: UIImage(systemName: "book.fill"), tag: 1)
         
-        let plantsCareViewController = UINavigationController()
+        let plantsCareViewController = UINavigationController(rootViewController: PlantsCareViewController())
         plantsCareViewController.tabBarItem = UITabBarItem(title: "식물관리", image: UIImage(systemName: "leaf.fill"), tag: 2)
         
-        let settingViewController = UINavigationController()
+        let settingViewController = UINavigationController(rootViewController: SettingViewController())
         settingViewController.tabBarItem = UITabBarItem(title: "설정", image: UIImage(systemName: "gearshape.fill"), tag: 3)
         
         let tabBarController = UITabBarController()
