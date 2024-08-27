@@ -53,9 +53,9 @@ class LoginViewController: BaseViewController {
                   let password = Int(passwordText) else {
                 return
             }
-            
             if Store.shared.login(userId: userId, password: password) {
                 print("로그인 성공")
+                self.navigationController?.popViewController(animated: true) // 화면 뒤로가기
             }
         }, for: .touchUpInside)
         
