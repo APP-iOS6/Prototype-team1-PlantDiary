@@ -7,39 +7,45 @@
 
 import UIKit
 
-class SignUpViewController: CommonViewController {
+class SignUpViewController: BaseViewController {
     
     private lazy var imageView: UIImageView = {
         let image: UIImage = UIImage(imageLiteralResourceName: "식물이")
         
         let imageView: UIImageView = UIImageView(image: image)
+        
         imageView.contentMode = .scaleAspectFit
+        
         return imageView
     }()
     
     // 아이디
     private lazy var idTextField: UITextField = {
           let textField: UITextField = UITextField()
+        
           textField.placeholder = "아이디"
           textField.borderStyle = .roundedRect // 모서리 라운딩
+        
           return textField
       }()
       
     // 비밀번호
       private lazy var passwordTextField: UITextField = {
           let textField: UITextField = UITextField()
+          
           textField.placeholder = "비밀번호"
           textField.borderStyle = .roundedRect
           textField.isSecureTextEntry = true // 비밀번호 가리기
+          
           return textField
       }()
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
+        
         button.setTitle("SignUp", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.backgroundColor = .darkGray
-        
         button.addAction(UIAction { _ in
             
         }, for: .touchUpInside)
@@ -50,8 +56,10 @@ class SignUpViewController: CommonViewController {
     
     private lazy var stackView: UIStackView = {
         let stackView: UIStackView = UIStackView()
+        
         stackView.axis = .vertical
         stackView.spacing = 12
+        
         return stackView
     }()
     
@@ -62,11 +70,8 @@ class SignUpViewController: CommonViewController {
     
     override func setupSubviews() {
         view.addSubview(stackView)
-     
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(idTextField)
-        stackView.addArrangedSubview(passwordTextField)
-        stackView.addArrangedSubview(loginButton)
+        
+        stackView.addArrangedSubviews([imageView, idTextField, passwordTextField, loginButton])
     }
     
     override func setupLayout() {

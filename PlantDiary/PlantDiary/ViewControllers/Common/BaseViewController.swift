@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CommonViewController: UIViewController {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,22 @@ class CommonViewController: UIViewController {
     func setupLayout() {
         for subview in view.subviews {
             subview.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+}
+
+extension UIView {
+    func addSubviews(_ views: [UIView]) {
+        for view in views {
+            addSubview(view)
+        }
+    }
+}
+
+extension UIStackView {
+    func addArrangedSubviews(_ views: [UIView]) {
+        for view in views {
+            addArrangedSubview(view)
         }
     }
 }

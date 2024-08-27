@@ -14,9 +14,7 @@ struct User {
 
 final class Store {
     public static let shared = Store()
-    
     private(set) var isLogin: Bool = false
-    
     private var userList: [User] = []
     
     init() {
@@ -42,23 +40,22 @@ final class Store {
     }
     
     func logout() {
-           isLogin = false
-       }
+        isLogin = false
+    }
 }
 
 // MARK: HomeViewController
-class HomeViewController: CommonViewController {
-    
-    
+class HomeViewController: BaseViewController {
     private(set) var isLogin: Bool = false
-    
     private let store: Store = Store.shared
     
     private lazy var label: UILabel = {
         let label: UILabel = UILabel()
+        
         label.text = "오늘의 감정상태"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 30)
+        
         return label
     }()
     
@@ -66,15 +63,18 @@ class HomeViewController: CommonViewController {
         let image: UIImage = UIImage(imageLiteralResourceName: "식물이")
         
         let imageView: UIImageView = UIImageView(image: image)
+        
         imageView.contentMode = .scaleAspectFit
+        
         return imageView
     }()
     
-    
     private lazy var stackView: UIStackView = {
         let stackView: UIStackView = UIStackView()
+        
         stackView.axis = .horizontal
         stackView.spacing = 10.5
+        
         return stackView
     }()
     
@@ -107,11 +107,8 @@ class HomeViewController: CommonViewController {
         removeTabBarGesture()
     }
     
-    
     override func setupSubviews() {
-        view.addSubview(stackView)
-        view.addSubview(label)
-        view.addSubview(imageView)
+        view.addSubviews([stackView, imageView])
         
         stackView.addArrangedSubview(label)
     }
