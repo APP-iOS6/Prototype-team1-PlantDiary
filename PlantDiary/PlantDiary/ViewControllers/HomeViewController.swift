@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: CommonViewController {
     
+    var isLoggedIn: Bool = false
+    
     private lazy var label: UILabel = {
         let label: UILabel = UILabel()
         label.text = "오늘의 감정상태"
@@ -28,7 +30,7 @@ class HomeViewController: CommonViewController {
     
     private lazy var stackView: UIStackView = {
         let stackView: UIStackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
         stackView.spacing = 10.5
         return stackView
     }()
@@ -36,12 +38,24 @@ class HomeViewController: CommonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 탭 제스처 추가
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
+        // 탭바 제스처 추가
+        if let tabBar = self.tabBarController?.tabBar {
+            let tabBarTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTabBarTap))
+            tabBar.addGestureRecognizer(tabBarTapGesture)
+        }
     }
     
     
     override func setupSubviews() {
+        view.addSubview(stackView)
         view.addSubview(label)
         view.addSubview(imageView)
+        
+        stackView.addArrangedSubview(label)
     }
     
     override func setupLayout() {
@@ -49,8 +63,8 @@ class HomeViewController: CommonViewController {
         
         NSLayoutConstraint.activate([
             // 라벨은 상단
-            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            label.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
             // 이미지는 화면 중앙에 배치
             imageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -59,6 +73,30 @@ class HomeViewController: CommonViewController {
             imageView.heightAnchor.constraint(equalToConstant: 350),
         ])
     }
+    
+    // 탭 이벤트
+    @objc private func handleTap() {
+        if isLoggedIn {
+            // 로그인 된 상태에서는 동작X
+            return
+        } else {
+            // 로그인이 안된 상태
+            let nextViewController = LoginViewController()
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        }
+    }
+    
+    @objc private func handleTabBarTap() {
+        if isLoggedIn {
+            // 로그인 된 상태에서는 동작 X
+            return
+        } else {
+            // 로그인이 안 된 상태 -> 로그인 화면으로 이동
+            let nextViewController = LoginViewController()
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        }
+    }
+    
 }
 
 #Preview {
