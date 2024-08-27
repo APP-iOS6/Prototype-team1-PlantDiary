@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlantDiaryViewController: UIViewController {
+class PlantDiaryViewController: BaseViewController {
     private lazy var label: UILabel = {
         let label: UILabel = UILabel()
         label.text = Month.april.rawValue
@@ -58,8 +58,6 @@ class PlantDiaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .systemBackground
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,15 +65,15 @@ class PlantDiaryViewController: UIViewController {
         setInterface()
     }
     
+    override func setupSubviews() {
+        super.setupSubviews()
+        
+        view.backgroundColor = .systemBackground
+        
+        view.addSubviews([label, imageView, textView])
+    }
+    
     func setInterface() {
-        view.addSubview(label)
-        view.addSubview(imageView)
-        view.addSubview(textView)
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
