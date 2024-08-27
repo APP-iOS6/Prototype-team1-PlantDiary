@@ -14,9 +14,8 @@ class SentimentAnalysisViewController: BaseViewController {
         
         label.text = "감정 분석 결과에요"
         label.textColor = .baseColor
-        label.font = .systemFont(ofSize: 30, weight: .bold)
+        label.font = .systemFont(ofSize: 35, weight: .bold)
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -33,10 +32,21 @@ class SentimentAnalysisViewController: BaseViewController {
         참여해보는 것이 좋을 것 같아요.
         """
         label.textColor = .baseColor
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = 10
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 6
+        style.paragraphSpacing = 12
+        style.alignment = .center
+
+        let attributedString = NSMutableAttributedString(string: label.text ?? "")
+        
+        attributedString.addAttributes([.font: UIFont.systemFont(ofSize: 18, weight: .bold), .foregroundColor: UIColor.baseColor, .paragraphStyle: style, ], range: NSRange(location: 0, length: attributedString.length))
+        
+        label.attributedText = attributedString
         
         return label
     }()
@@ -49,7 +59,6 @@ class SentimentAnalysisViewController: BaseViewController {
         
         button.setImage(resizeImage, for: .normal)
         button.tintColor = .baseColor
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
             self?.back()
         }, for: .touchUpInside)
@@ -61,9 +70,8 @@ class SentimentAnalysisViewController: BaseViewController {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, resultLabel, backButton])
         
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 55
         stackView.alignment = .center
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView
     }()
@@ -73,10 +81,14 @@ class SentimentAnalysisViewController: BaseViewController {
     }
 
     override func setupSubviews() {
+        super.setupSubviews()
+        
         view.addSubview(stackView)
     }
     
     override func setupLayout() {
+        super.setupLayout()
+        
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),

@@ -51,7 +51,6 @@ class EdittingDiaryViewController: BaseViewController {
         label.text = "감정노트에요."
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .lightGray
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -109,7 +108,6 @@ class EdittingDiaryViewController: BaseViewController {
         
         picker.delegate = self
         picker.dataSource = self
-        picker.translatesAutoresizingMaskIntoConstraints = false
         
         return picker
     }()

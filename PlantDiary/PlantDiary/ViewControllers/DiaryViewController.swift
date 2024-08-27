@@ -48,9 +48,7 @@ class DiaryViewController: BaseViewController {
     
     private var subView: UIView = {
         let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
+                
         return view
     }()
     
@@ -78,7 +76,6 @@ class DiaryViewController: BaseViewController {
     private lazy var dateView: UICalendarView = {
         let dateView = UICalendarView()
         
-        dateView.translatesAutoresizingMaskIntoConstraints = false
         dateView.wantsDateDecorations = true
         dateView.tintColor = .baseColor
         
@@ -103,23 +100,11 @@ class DiaryViewController: BaseViewController {
         segmentedControl.selectedSegmentIndex = 0
     }
     
-    fileprivate func setCalendar() {
-        dateView.delegate = self
-        
-        let dateSelection = UICalendarSelectionSingleDate(delegate: self)
-        dateView.selectionBehavior = dateSelection
-    }
-    
-    func reloadDateView(date: Date?) {
-        if date == nil { return }
-        let calendar = Calendar.current
-        dateView.reloadDecorations(forDateComponents: [calendar.dateComponents([.day, .month, .year], from: date!)], animated: true)
-    }
-    
     override func setupSubviews() {
         super.setupSubviews()
         
         vStackView.addArrangedSubviews([todayDateLabel, dateView])
+        
         subView.addSubview(vStackView)
         
         view.addSubviews([subView, segmentedControl])
@@ -146,6 +131,19 @@ class DiaryViewController: BaseViewController {
             vStackView.topAnchor.constraint(equalTo: subView.topAnchor),
             vStackView.bottomAnchor.constraint(equalTo: subView.bottomAnchor),
         ])
+    }
+    
+    fileprivate func setCalendar() {
+        dateView.delegate = self
+        
+        let dateSelection = UICalendarSelectionSingleDate(delegate: self)
+        dateView.selectionBehavior = dateSelection
+    }
+    
+    func reloadDateView(date: Date?) {
+        if date == nil { return }
+        let calendar = Calendar.current
+        dateView.reloadDecorations(forDateComponents: [calendar.dateComponents([.day, .month, .year], from: date!)], animated: true)
     }
 }
 

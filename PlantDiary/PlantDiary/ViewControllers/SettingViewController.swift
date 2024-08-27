@@ -14,8 +14,9 @@ class SettingViewController: BaseViewController {
     private lazy var label: UILabel = {
         let label: UILabel = UILabel()
         label.text = "\(store.loginId)님"
+        label.textColor = .baseColor
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 30)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         return label
     }()
@@ -27,7 +28,8 @@ class SettingViewController: BaseViewController {
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 50
-        imageView.layer.borderWidth = 1.5
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.baseColor.cgColor
         
         return imageView
     }()
@@ -36,16 +38,20 @@ class SettingViewController: BaseViewController {
     private lazy var logOutButton: UIButton = {
         let button = UIButton()
         
-        button.setTitle("로그아웃", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 100)
-        button.backgroundColor = .darkGray
-        button.addAction(UIAction { [] _ in
-            self.store.logout() // 로그아웃
+        button.configuration = .plain()
+        button.configuration?.image = UIImage(systemName: "xmark.circle.fill")
+        button.configuration?.imagePadding = 5
+        button.configuration?.imagePlacement = .leading
+        button.configuration?.title = "LogOut"
+        button.tintColor = .red
+        
+        button.addAction(UIAction { [weak self] _ in
+            self?.store.logout() // 로그아웃
             
             // SceneDelegate에서 설정한 탭바의 첫 번째 탭(HomeViewController)으로 이동
-            if let tabBarController = self.view.window?.rootViewController as? UITabBarController {
+            if let tabBarController = self?.view.window?.rootViewController as? UITabBarController {
                 tabBarController.selectedIndex = 0  // 첫 번째 탭 선택
-                self.navigationController?.popToRootViewController(animated: true)
+                self?.navigationController?.popToRootViewController(animated: true)
             }
             
             print("로그아웃 성공")
@@ -57,7 +63,7 @@ class SettingViewController: BaseViewController {
     private lazy var stackView: UIStackView = {
         let stackView: UIStackView = UIStackView()
         
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         stackView.spacing = 10.5
         
         return stackView
@@ -80,7 +86,7 @@ class SettingViewController: BaseViewController {
         view.addSubview(stackView)
         view.addSubview(logOutButton)
         
-        stackView.addArrangedSubviews([label, imageView])
+        stackView.addArrangedSubviews([imageView, label])
         
     }
     
@@ -94,9 +100,8 @@ class SettingViewController: BaseViewController {
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
-            logOutButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            logOutButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            
+            logOutButton.topAnchor.constraint(equalTo: stackView.bottomAnchor),
+            logOutButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
     }
 }
