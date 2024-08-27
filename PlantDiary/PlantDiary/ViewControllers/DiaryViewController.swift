@@ -12,7 +12,7 @@ enum SegmentFlag: String {
     case sentiment = "Sentiment"
 }
 
-class DiaryViewController: UIViewController {
+class DiaryViewController: BaseViewController {
     
     private var segmentFlag: String = SegmentFlag.diary.rawValue
     private var selectedDate: DateComponents? = nil
@@ -29,6 +29,19 @@ class DiaryViewController: UIViewController {
                 self?.segmentFlag = SegmentFlag.sentiment.rawValue
             }
         }, for: .allEvents)
+        // 선택된 상태의 텍스트 색상
+        let normalTextAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.baseColor,
+            .font: UIFont.boldSystemFont(ofSize: 14)
+        ]
+        
+        let selectedTextAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.baseColor,
+            .font: UIFont.boldSystemFont(ofSize: 14)
+        ]
+        
+        segmentedControl.setTitleTextAttributes(normalTextAttributes, for: .normal)
+        segmentedControl.setTitleTextAttributes(selectedTextAttributes, for: .selected)
         
         return segmentedControl
     }()
@@ -44,10 +57,20 @@ class DiaryViewController: UIViewController {
     private lazy var todayDateLabel: UILabel = {
         let label = UILabel()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        let dateToString = dateFormatter.string(from: Date())
-        label.text = dateToString
+        let yearFormatter = DateFormatter()
+        let monthDayFormatter = DateFormatter()
+        yearFormatter.dateFormat = "yyyy년"
+        monthDayFormatter.dateFormat = "MM월 dd일"
+        let yearString = yearFormatter.string(from: Date())
+        let monthDayString = monthDayFormatter.string(from: Date())
+        label.text = """
+                    오늘은
+                    \(yearString)
+                    \(monthDayString)이에요.
+                    """
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 35, weight: .bold)
+        label.textColor = .baseColor
         
         return label
     }()
@@ -57,6 +80,7 @@ class DiaryViewController: UIViewController {
         
         dateView.translatesAutoresizingMaskIntoConstraints = false
         dateView.wantsDateDecorations = true
+        dateView.tintColor = .baseColor
         
         return dateView
     }()
@@ -65,21 +89,17 @@ class DiaryViewController: UIViewController {
         let stack = UIStackView()
         
         stack.axis = .vertical
-        stack.spacing = 10
-        stack.distribution = .equalSpacing
+        stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         return stack
     }()
     
     override func viewDidLoad() {
-        view.backgroundColor = .systemBackground
+        super.viewDidLoad()
         
         setCalendar()
         reloadDateView(date: Date())
-        setupUI()
-        setupLayout()
-        
         segmentedControl.selectedSegmentIndex = 0
     }
     
@@ -96,22 +116,31 @@ class DiaryViewController: UIViewController {
         dateView.reloadDecorations(forDateComponents: [calendar.dateComponents([.day, .month, .year], from: date!)], animated: true)
     }
     
-    func setupUI() {
+    override func setupSubviews() {
+        super.setupSubviews()
+        
         vStackView.addArrangedSubviews([todayDateLabel, dateView])
         subView.addSubview(vStackView)
         
-        view.addSubviews([segmentedControl, subView])
+        view.addSubviews([subView, segmentedControl])
     }
     
-    func setupLayout() {
+    override func setupLayout() {
+        super.setupLayout()
+        
         let safeGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
             segmentedControl.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
-            segmentedControl.bottomAnchor.constraint(equalTo: subView.topAnchor, constant: -70),
+            segmentedControl.topAnchor.constraint(equalTo: vStackView.bottomAnchor, constant: 20),
+            segmentedControl.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
             
+            subView.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 20),
             subView.centerYAnchor.constraint(equalTo: safeGuide.centerYAnchor, constant: 20),
+            subView.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: 100), 
             
+            vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 20),
+            vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
             vStackView.centerXAnchor.constraint(equalTo: subView.centerXAnchor),
             vStackView.widthAnchor.constraint(equalTo: subView.widthAnchor),
             vStackView.topAnchor.constraint(equalTo: subView.topAnchor),
@@ -121,6 +150,7 @@ class DiaryViewController: UIViewController {
 }
 
 extension DiaryViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
+    
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         selection.setSelected(dateComponents, animated: true)
         selectedDate = dateComponents

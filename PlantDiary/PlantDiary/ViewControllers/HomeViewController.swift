@@ -48,12 +48,42 @@ final class Store {
 class HomeViewController: BaseViewController {
     private let store: Store = Store.shared
     
+    private lazy var tipLabel: UILabel = {
+        let label: UILabel = UILabel()
+        
+        label.text = "기분이 좋지 않을 때에는 나 자신으로부터 멀어져 보세요."
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = .baseColor
+        
+        return label
+    }()
+    
     private lazy var label: UILabel = {
         let label: UILabel = UILabel()
         
-        label.text = "오늘의 감정상태"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 30)
+        label.text = "Today is..."
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.textColor = .baseColor
+        
+        return label
+    }()
+    
+    private lazy var sentimentLabel: UILabel = {
+        let label: UILabel = UILabel()
+        
+        label.text = """
+                        여느 때와 같은 평범한 날이지만,
+                        미래로 통하는 가장 중요한 시간,
+                        잘 보내셨길 바랄게요.
+                    
+                        오늘 하루도 고생하셨어요.
+                    """
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = .baseColor
         
         return label
     }()
@@ -62,8 +92,9 @@ class HomeViewController: BaseViewController {
         let imageView: UIImageView = UIImageView()
         
         imageView.image = UIImage(named: "식물이")
-        
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
@@ -71,8 +102,8 @@ class HomeViewController: BaseViewController {
     private lazy var stackView: UIStackView = {
         let stackView: UIStackView = UIStackView()
         
-        stackView.axis = .horizontal
-        stackView.spacing = 10.5
+        stackView.axis = .vertical
+        stackView.spacing = 50
         
         return stackView
     }()
@@ -80,6 +111,7 @@ class HomeViewController: BaseViewController {
     // 처음 뷰가 로드
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // 탭 제스처
         if store.isLogin {
             // 로그인 된 상태에서는 기본 탭바 동작을 사용
@@ -107,24 +139,30 @@ class HomeViewController: BaseViewController {
     }
     
     override func setupSubviews() {
-        view.addSubviews([stackView, imageView])
+        stackView.addArrangedSubviews([imageView, label, sentimentLabel])
         
-        stackView.addArrangedSubview(label)
+        view.addSubviews([tipLabel, stackView])
     }
     
     override func setupLayout() {
         super.setupLayout()
         
         NSLayoutConstraint.activate([
-            // 라벨은 상단
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            tipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            tipLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             
-            // 이미지는 화면 중앙에 배치
-            imageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            imageView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 350),
+            imageView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -100),
+            imageView.heightAnchor.constraint(equalTo: stackView.widthAnchor),
+            
+            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 60),
+            
+            sentimentLabel.topAnchor.constraint(equalTo: label.bottomAnchor),
+            
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70),
+            stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
         ])
     }
     
@@ -173,7 +211,11 @@ class HomeViewController: BaseViewController {
             self.navigationController?.pushViewController(nextViewController, animated: true)
         }
     }
-    
+}
+
+extension UIColor {
+    static let baseColor = UIColor(red: 80/255, green: 90/255, blue: 55/255, alpha: 1.0)
+    static let baseColor2 = UIColor(red: 221/255, green: 217/255, blue: 190/255, alpha: 1.0)
 }
 
 #Preview {
