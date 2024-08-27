@@ -29,6 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         SceneDelegate.tabBarController.viewControllers = [homeViewController, diaryViewController, plantsCareViewController, settingViewController]
         SceneDelegate.tabBarController.tabBar.tintColor = .baseColor
+        SceneDelegate.tabBarController.tabBar.layer.borderColor = UIColor.clear.cgColor
+        SceneDelegate.tabBarController.tabBar.layer.borderWidth = 0.50
+        SceneDelegate.tabBarController.tabBar.clipsToBounds = true
         
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene

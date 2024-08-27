@@ -33,5 +33,9 @@ class BaseNavigationController: UINavigationController {
         navigationBar.compactAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
         navigationBar.standardAppearance = appearance
+        
+        navigationBar.layer.borderColor = UIColor.clear.cgColor
+        navigationBar.layer.borderWidth = 0.50
+        navigationBar.clipsToBounds = true
     }
 }

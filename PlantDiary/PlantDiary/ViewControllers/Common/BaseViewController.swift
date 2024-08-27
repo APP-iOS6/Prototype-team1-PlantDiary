@@ -17,6 +17,25 @@ class BaseViewController: UIViewController {
         
         setupSubviews()
         setupLayout()
+        
+        setTitle(andImage: UIImage(named: "앱이름")!)
+        
+        let tabBarAppearance = UITabBarAppearance()
+        
+        tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [
+            .font: UIFont(name: "RIDIBatang", size: 16)!,
+            .foregroundColor: UIColor.baseColor
+        ]
+        
+        tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [
+            .font: UIFont(name: "RIDIBatang", size: 16)!,
+            .foregroundColor: UIColor.baseColor
+        ]
+        
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        
+        tabBarAppearance.backgroundColor = .baseColor2
     }
     
     func setupSubviews() {
@@ -27,6 +46,24 @@ class BaseViewController: UIViewController {
         for subview in view.subviews {
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
+    }
+}
+
+extension BaseViewController {
+    func setTitle(andImage image: UIImage) {
+        let imageView = UIImageView(image: image)
+        
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: 80),
+            imageView.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        let titleView = imageView
+        
+        navigationItem.titleView = titleView
     }
 }
 
