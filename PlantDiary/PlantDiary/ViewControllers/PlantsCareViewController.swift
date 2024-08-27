@@ -32,6 +32,7 @@ class PlantsCareViewController: BaseViewController {
         layout.scrollDirection = .vertical
         
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .baseColor2
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         collectionView.delegate = self
@@ -43,8 +44,6 @@ class PlantsCareViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .systemBackground
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +92,7 @@ extension PlantsCareViewController: UICollectionViewDelegateFlowLayout, UICollec
         if indexPath.row == 3 {
             imageView.image = UIImage(named: "식물이")
         } else {
-            imageView.image = UIImage(systemName: "questionmark.bubble.fill")
+            imageView.image = UIImage(systemName: "leaf.fill")
         }
         
         imageView.contentMode = .scaleAspectFit
@@ -103,12 +102,15 @@ extension PlantsCareViewController: UICollectionViewDelegateFlowLayout, UICollec
         
         label.text = Month.allCases[indexPath.row].rawValue
         label.font = .boldSystemFont(ofSize: 15)
+        label.textColor = .baseColor
         
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(label)
         
         cell.addSubview(stackView)
         cell.layer.cornerRadius = 20
+        cell.backgroundColor = .baseColor2
+
        
         return cell
     }
