@@ -14,8 +14,9 @@ struct User {
 
 final class Store {
     public static let shared = Store()
-    private(set) var isLogin: Bool = true
+    private(set) var isLogin: Bool = false
     private var userList: [User] = []
+    public var loginId: String = ""
     
     init() {
         userList = [
@@ -34,6 +35,7 @@ final class Store {
     func login(userId: String, password: Int) -> Bool {
         if searchUser(userId: userId, password: password) {
             isLogin = true
+            loginId = userId
             return true
         }
         return false
@@ -41,6 +43,11 @@ final class Store {
     
     func logout() {
         isLogin = false
+    }
+    
+    public func addUser(userId: String, password: Int)  {
+        let user = User(userId: userId, userPassword: password)
+        userList.append(user)
     }
 }
 
