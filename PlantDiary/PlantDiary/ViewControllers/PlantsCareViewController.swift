@@ -8,18 +8,18 @@
 import UIKit
 
 enum Month: String, CaseIterable {
-    case january = "Jan"
-    case february = "Feb"
-    case march = "Mar"
-    case april = "Apr"
-    case may = "May"
-    case june = "Jun"
-    case july = "Jul"
-    case august = "Aug"
-    case september = "Sep"
-    case october = "Oct"
-    case november = "Nov"
-    case december = "Dec"
+    case january = "일월이"
+    case february = "이월이"
+    case march = "삼월이"
+    case april = "사월이"
+    case may = "오월이"
+    case june = "유월이"
+    case july = "칠월이"
+    case august = "팔월이"
+    case september = "구월이"
+    case october = "시월이"
+    case november = "십일월이"
+    case december = "십이월이"
 }
 
 class PlantsCareViewController: BaseViewController {

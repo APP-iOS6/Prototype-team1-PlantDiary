@@ -8,38 +8,62 @@
 import UIKit
 
 class EdittingDiaryViewController: BaseViewController {
-    private let emotions = ["😁", "😭", "🥺", "😡", "😐"]
+    private let emotions = ["#기쁨", "#슬픔", "#우울함", "#화남", "#평범함"]
     private var selectedEmotion: String?
 
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "당신의 오늘은 어떠셨나요?"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = .baseColor
+        label.textAlignment = .left
+        
+        return label
+    }()
+    
     private lazy var textView: UITextView = {
         let textView = UITextView()
+        
         textView.backgroundColor = UIColor.systemBackground
-        textView.translatesAutoresizingMaskIntoConstraints = false
         textView.delegate = self
+        textView.backgroundColor = .clear
+        
         return textView
+    }()
+    
+    private lazy var imageView: UIImageView = {
+        let imageView: UIImageView = UIImageView()
+        
+        imageView.image = UIImage(named: "일기장")
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 15
+        imageView.layer.borderColor = UIColor.baseColor.cgColor
+        imageView.layer.borderWidth = 2
+        
+        return imageView
     }()
     
     private lazy var placeholderLabel: UILabel = {
         let label = UILabel()
-        label.text = "여기에 일지를 작성하세요."
+        
+        label.text = "감정노트에요."
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "일지 작성"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
     private lazy var saveButton: UIButton = {
         let button = UIButton()
-        button.setTitle("저장", for: .normal)
+        
+        let image = UIImage(systemName: "square.and.arrow.down.on.square")
+        let resizeImage = image?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
+        
+        button.setImage(resizeImage, for: .normal)
+        button.tintColor = .baseColor
         button.setTitleColor(.systemBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
@@ -54,12 +78,18 @@ class EdittingDiaryViewController: BaseViewController {
             }))
             self?.present(alert, animated: true, completion: nil)
         }, for: .touchUpInside)
+        
         return button
     }()
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
-        button.setTitle("취소", for: .normal)
+        
+        let image = UIImage(systemName: "xmark")
+        let resizeImage = image?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
+        
+        button.setImage(resizeImage, for: .normal)
+        button.tintColor = .baseColor
         button.setTitleColor(.systemRed, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
@@ -70,64 +100,73 @@ class EdittingDiaryViewController: BaseViewController {
             }))
             self?.present(alert, animated: true, completion: nil)
         }, for: .touchUpInside)
+        
         return button
     }()
     
     private lazy var emotionPicker: UIPickerView = {
         let picker = UIPickerView()
+        
+        picker.delegate = self
+        picker.dataSource = self
         picker.translatesAutoresizingMaskIntoConstraints = false
+        
         return picker
+    }()
+    
+    private lazy var hStackView: UIStackView = {
+        let stackView = UIStackView()
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        
+        return stackView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emotionPicker.delegate = self
-        emotionPicker.dataSource = self
-        
-        setupSubviews()
-        setupLayout()
         updatePlaceholderVisibility()
     }
     
     override func setupSubviews() {
         super.setupSubviews()
-        view.backgroundColor = .systemBackground
         
-        view.addSubview(titleLabel)
-        view.addSubview(textView)
-        view.addSubview(placeholderLabel)
-        view.addSubview(emotionPicker)
-        view.addSubview(saveButton)
-        view.addSubview(cancelButton)
+        hStackView.addArrangedSubviews([emotionPicker, saveButton, cancelButton])
+        
+        view.addSubviews([titleLabel, imageView, textView, placeholderLabel, hStackView])
     }
     
     override func setupLayout() {
         super.setupLayout()
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: textView.leadingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            titleLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -30),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            textView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -20),
+            textView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
+            textView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            textView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 10),
+            textView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
+            
+            imageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            imageView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -20),
             
             placeholderLabel.topAnchor.constraint(equalTo: textView.topAnchor, constant: 8),
             placeholderLabel.leadingAnchor.constraint(equalTo: textView.leadingAnchor, constant: 5),
             placeholderLabel.trailingAnchor.constraint(equalTo: textView.trailingAnchor, constant: -5),
             
-            emotionPicker.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: -50),
-            emotionPicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
-            emotionPicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
-            emotionPicker.heightAnchor.constraint(equalToConstant: 150),
+            emotionPicker.widthAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 0.5),
+            emotionPicker.heightAnchor.constraint(equalToConstant: 60),
             
-            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10),
-            
-            cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            cancelButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
+            hStackView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            hStackView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -20),
+            hStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            hStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -154,7 +193,7 @@ extension EdittingDiaryViewController: UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.text = emotions[row]
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.systemFont(ofSize: 17)
         label.textAlignment = .center
         return label
     }
