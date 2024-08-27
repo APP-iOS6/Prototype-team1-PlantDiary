@@ -42,7 +42,8 @@ class LoginViewController: CommonViewController {
         button.backgroundColor = .darkGray
         
         button.addAction(UIAction { _ in
-            // 버튼 클릭 시 액션
+            Store.shared.islog = true
+            print("로그인: \(Store.shared.isLogin)")
         }, for: .touchUpInside)
         
         return button

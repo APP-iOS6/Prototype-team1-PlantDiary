@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: CommonViewController {
     
-    var isLoggedIn: Bool = false
+    private let store: Store = Store.shared
     
     private lazy var label: UILabel = {
         let label: UILabel = UILabel()
@@ -35,18 +35,33 @@ class HomeViewController: CommonViewController {
         return stackView
     }()
     
+    // 처음 뷰가 로드
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 탭 제스처 추가
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tapGestureRecognizer)
-        
-        // 탭바 제스처 추가
-        if let tabBar = self.tabBarController?.tabBar {
-            let tabBarTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTabBarTap))
-            tabBar.addGestureRecognizer(tabBarTapGesture)
+        // 탭 제스처
+        if store.isLogin {
+            // 로그인 된 상태에서는 기본 탭바 동작을 사용
+            removeTabBarGesture()
+        } else {
+            // 로그인 안 된 상태에서는 탭바 제스처 추가
+            addTabBarGesture()
         }
+    }
+    // 뷰가 화면에 나타날 때마다
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 로그인 상태가 변경될 수 있으니 탭바 제스처를 업데이트
+        if store.isLogin {
+            removeTabBarGesture()
+        } else {
+            addTabBarGesture()
+        }
+    }
+    // 뷰가 화면에 사라지기 직전
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeTabBarGesture()
     }
     
     
@@ -74,9 +89,32 @@ class HomeViewController: CommonViewController {
         ])
     }
     
+    private func addTabBarGesture() {
+        // 화면 클릭 시 로그인 화면
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
+        // 탭바 제스처 추가
+        if let tabBar = self.tabBarController?.tabBar {
+            let tabBarTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTabBarTap))
+            tabBar.addGestureRecognizer(tabBarTapGesture)
+        }
+    }
+    
+    private func removeTabBarGesture() {
+        // 탭바 제스처 제거
+        if let tabBar = self.tabBarController?.tabBar {
+            for gesture in tabBar.gestureRecognizers ?? [] {
+                if gesture is UITapGestureRecognizer {
+                    tabBar.removeGestureRecognizer(gesture)
+                }
+            }
+        }
+    }
+    
     // 탭 이벤트
     @objc private func handleTap() {
-        if isLoggedIn {
+        if store.isLogin {
             // 로그인 된 상태에서는 동작X
             return
         } else {
@@ -87,7 +125,7 @@ class HomeViewController: CommonViewController {
     }
     
     @objc private func handleTabBarTap() {
-        if isLoggedIn {
+        if store.isLogin {
             // 로그인 된 상태에서는 동작 X
             return
         } else {
