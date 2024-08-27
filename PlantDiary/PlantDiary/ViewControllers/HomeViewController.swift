@@ -14,7 +14,7 @@ struct User {
 
 final class Store {
     public static let shared = Store()
-    private(set) var isLogin: Bool = false
+    private(set) var isLogin: Bool = true
     private var userList: [User] = []
     
     init() {
@@ -46,7 +46,6 @@ final class Store {
 
 // MARK: HomeViewController
 class HomeViewController: BaseViewController {
-    private(set) var isLogin: Bool = false
     private let store: Store = Store.shared
     
     private lazy var label: UILabel = {
