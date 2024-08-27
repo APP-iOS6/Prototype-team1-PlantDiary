@@ -19,9 +19,12 @@
 		8E6A9A932C7D588100649106 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A922C7D588100649106 /* DiaryViewController.swift */; };
 		8E6A9A952C7D588900649106 /* PlantsCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */; };
 		8E6A9A972C7D588F00649106 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A962C7D588F00649106 /* SettingViewController.swift */; };
+		B88466E62C7D5D13004ECA58 /* EdittingDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88466E52C7D5D13004ECA58 /* EdittingDiaryViewController.swift */; };
+		B88466E82C7D5D39004ECA58 /* SentimentAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88466E72C7D5D39004ECA58 /* SentimentAnalysisViewController.swift */; };
 		EADED02C2C7D62BC00871A08 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADED02B2C7D62BC00871A08 /* CommonViewController.swift */; };
 		EADED02E2C7D684300871A08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADED02D2C7D684300871A08 /* LoginViewController.swift */; };
 		EADED0302C7D6F7B00871A08 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADED02F2C7D6F7B00871A08 /* SignUpViewController.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,8 @@
 		8E6A9A922C7D588100649106 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsCareViewController.swift; sourceTree = "<group>"; };
 		8E6A9A962C7D588F00649106 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		B88466E52C7D5D13004ECA58 /* EdittingDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingDiaryViewController.swift; sourceTree = "<group>"; };
+		B88466E72C7D5D39004ECA58 /* SentimentAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalysisViewController.swift; sourceTree = "<group>"; };
 		EADED02B2C7D62BC00871A08 /* CommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 		EADED02D2C7D684300871A08 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EADED02F2C7D6F7B00871A08 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +146,9 @@
 		8E6A9A982C7D5AD000649106 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8E6A9A922C7D588100649106 /* DiaryViewController.swift */,
+				B88466E52C7D5D13004ECA58 /* EdittingDiaryViewController.swift */,
+				B88466E72C7D5D39004ECA58 /* SentimentAnalysisViewController.swift */,
 				8E6A9A962C7D588F00649106 /* SettingViewController.swift */,
 				8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */,
 				6EC020242C7D7EE40045408A /* PlantDiaryViewController.swift */,
@@ -293,6 +301,8 @@
 			files = (
 				8E6A9A932C7D588100649106 /* DiaryViewController.swift in Sources */,
 				8E6A9A612C7D4E6A00649106 /* AppDelegate.swift in Sources */,
+				B88466E82C7D5D39004ECA58 /* SentimentAnalysisViewController.swift in Sources */,
+				B88466E62C7D5D13004ECA58 /* EdittingDiaryViewController.swift in Sources */,
 				8E6A9A632C7D4E6A00649106 /* SceneDelegate.swift in Sources */,
 				6EC020252C7D7EE40045408A /* PlantDiaryViewController.swift in Sources */,
 				8E6A9A912C7D587300649106 /* HomeViewController.swift in Sources */,
