@@ -8,6 +8,7 @@
 import UIKit
 
 class SignUpViewController: BaseViewController {
+    private let store: Store = Store.shared
     
     private lazy var imageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
@@ -47,6 +48,15 @@ class SignUpViewController: BaseViewController {
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.backgroundColor = .darkGray
         button.addAction(UIAction { _ in
+            guard let userId = self.idTextField.text, !userId.isEmpty,
+                  let passwordText = self.passwordTextField.text, !passwordText.isEmpty,
+                  let password = Int(passwordText) else {
+                return
+            }
+            self.store.addUser(userId: userId, password: password)
+            self.dismiss(animated: true)
+            self.navigationController?.popViewController(animated: true)
+            print("회원가입 성공")
             
         }, for: .touchUpInside)
         
@@ -67,6 +77,7 @@ class SignUpViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     
     override func setupSubviews() {
         view.addSubview(stackView)
