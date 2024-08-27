@@ -25,6 +25,7 @@ Licensed under the [MIT](LICENSE) license.
 https://excalidraw.com/#room=f3f033323989d12153c3,lC9DcBrM-lRSFE7e-gjknQ
 
 # 실행 화면
-![Simulator Screen Recording - iPhone 15 Pro - 2024-08-27 at 22 56 11](https://github.com/user-attachments/assets/6f3f28da-ce42-4eaf-92c3-f95b48bf092e)
+![Simulator Screen Recording - iPhone 15 Pro - 2024-08-28 at 02 22 42](https://github.com/user-attachments/assets/c7b5adf5-b7b1-4529-b0a4-a80df6af97c6)
+
 
 
