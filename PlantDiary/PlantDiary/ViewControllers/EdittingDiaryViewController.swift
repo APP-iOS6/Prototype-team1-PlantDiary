@@ -145,7 +145,7 @@ class EdittingDiaryViewController: BaseViewController {
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             textView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
-            textView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            textView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10),
             textView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 10),
             textView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
             
