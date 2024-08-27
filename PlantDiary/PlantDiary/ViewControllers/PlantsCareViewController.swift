@@ -101,7 +101,7 @@ extension PlantsCareViewController: UICollectionViewDelegateFlowLayout, UICollec
         let label = UILabel()
         
         label.text = Month.allCases[indexPath.row].rawValue
-        label.font = .boldSystemFont(ofSize: 15)
+        label.font = UIFont(name: fontName, size: 15)
         label.textColor = .baseColor
         
         stackView.addArrangedSubview(imageView)

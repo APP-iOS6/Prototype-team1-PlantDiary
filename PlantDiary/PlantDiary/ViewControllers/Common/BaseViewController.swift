@@ -8,6 +8,7 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    let fontName = "RIDIBatang"
 
     override func viewDidLoad() {
         super.viewDidLoad()

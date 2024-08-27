@@ -12,9 +12,9 @@ class SentimentAnalysisViewController: BaseViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "감정 분석 결과에요"
+        label.text = "감정 분석 결과예요"
         label.textColor = .baseColor
-        label.font = .systemFont(ofSize: 35, weight: .bold)
+        label.font = UIFont(name: fontName, size: 35)
         label.textAlignment = .center
         
         return label
@@ -24,7 +24,7 @@ class SentimentAnalysisViewController: BaseViewController {
         let label = UILabel()
         
         label.text = """
-        가벼운 우울감을 겪고 있는 상태에요.
+        가벼운 우울감을 겪고 있는 상태예요.
         우울증 예방을 위해서
         운동이나 여가 및 취미활동 등
         즐거움을 얻을 수 있는 
@@ -32,9 +32,6 @@ class SentimentAnalysisViewController: BaseViewController {
         참여해보는 것이 좋을 것 같아요.
         """
         label.textColor = .baseColor
-        label.layer.masksToBounds = true
-        label.layer.cornerRadius = 10
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.numberOfLines = 0
         
         let style = NSMutableParagraphStyle()
@@ -44,7 +41,7 @@ class SentimentAnalysisViewController: BaseViewController {
 
         let attributedString = NSMutableAttributedString(string: label.text ?? "")
         
-        attributedString.addAttributes([.font: UIFont.systemFont(ofSize: 18, weight: .bold), .foregroundColor: UIColor.baseColor, .paragraphStyle: style, ], range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttributes([.font: UIFont(name: fontName, size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), .foregroundColor: UIColor.baseColor, .paragraphStyle: style, ], range: NSRange(location: 0, length: attributedString.length))
         
         label.attributedText = attributedString
         

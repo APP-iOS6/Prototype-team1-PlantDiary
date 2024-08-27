@@ -9,6 +9,8 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    
+    static let tabBarController = UITabBarController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -25,13 +27,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let settingViewController = BaseNavigationController(rootViewController: SettingViewController())
         settingViewController.tabBarItem = UITabBarItem(title: "설정", image: UIImage(systemName: "gearshape.fill"), tag: 3)
         
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [homeViewController, diaryViewController, plantsCareViewController, settingViewController]
-        tabBarController.tabBar.tintColor = .baseColor
+        SceneDelegate.tabBarController.viewControllers = [homeViewController, diaryViewController, plantsCareViewController, settingViewController]
+        SceneDelegate.tabBarController.tabBar.tintColor = .baseColor
         
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
-        window?.rootViewController = tabBarController
+        window?.rootViewController = AppNameViewController()
         window?.makeKeyAndVisible()
     }
 

@@ -23,6 +23,7 @@ class LoginViewController: BaseViewController {
         let textField: UITextField = UITextField()
         
         textField.placeholder = "아이디"
+        textField.font = UIFont(name: fontName, size: 18)
         textField.borderStyle = .roundedRect // 모서리 라운딩
         
         return textField
@@ -33,6 +34,7 @@ class LoginViewController: BaseViewController {
         let textField: UITextField = UITextField()
         
         textField.placeholder = "비밀번호"
+        textField.font = UIFont(name: fontName, size: 18)
         textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true // 비밀번호 가리기
         
@@ -44,7 +46,7 @@ class LoginViewController: BaseViewController {
         let button = UIButton()
         
         button.setTitle("Login", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
+        button.titleLabel?.font = UIFont(name: fontName, size: 15)
         button.backgroundColor = .darkGray
         
         button.addAction(UIAction { _ in
@@ -67,7 +69,7 @@ class LoginViewController: BaseViewController {
         let button = UIButton()
         
         button.setTitle("SignUp", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
+        button.titleLabel?.font = UIFont(name: fontName, size: 15) 
         button.backgroundColor = .darkGray
         button.addAction(UIAction { _ in
             let viewController = SignUpViewController()

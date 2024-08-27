@@ -14,8 +14,8 @@ class EdittingDiaryViewController: BaseViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "당신의 오늘은 어떠셨나요?"
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.text = "당신의 오늘은 어땠나요?"
+        label.font = UIFont(name: fontName, size: 18)
         label.textColor = .baseColor
         label.textAlignment = .left
         
@@ -48,8 +48,8 @@ class EdittingDiaryViewController: BaseViewController {
     private lazy var placeholderLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "감정노트에요."
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.text = "감정노트예요."
+        label.font = UIFont(name: fontName, size: 16)
         label.textColor = .lightGray
         
         return label
@@ -66,7 +66,7 @@ class EdittingDiaryViewController: BaseViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
-            let alert = UIAlertController(title: nil, message: "저장 할까요?", preferredStyle: .alert)
+            let alert = UIAlertController(title: nil, message: "저장할까요?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "취소", style: .cancel))
             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
                 let confirmationAlert = UIAlertController(title: nil, message: "저장 되었습니다!", preferredStyle: .alert)
@@ -92,7 +92,7 @@ class EdittingDiaryViewController: BaseViewController {
         button.setTitleColor(.systemRed, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
-            let alert = UIAlertController(title: nil, message: "일지 작성을 취소 할까요?", preferredStyle: .alert)
+            let alert = UIAlertController(title: nil, message: "일지 작성을 취소할까요?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "취소", style: .cancel))
             alert.addAction(UIAlertAction(title: "확인", style: .destructive, handler: { _ in
                 self?.dismiss(animated: true, completion: nil)
@@ -191,7 +191,7 @@ extension EdittingDiaryViewController: UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.text = emotions[row]
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont(name: fontName, size: 18)
         label.textAlignment = .center
         return label
     }

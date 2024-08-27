@@ -12,7 +12,7 @@ class PlantDiaryViewController: BaseViewController {
         let label: UILabel = UILabel()
         
         label.text = Month.april.rawValue
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont(name: fontName, size: 18)
         label.textColor = .baseColor
         label.textAlignment = .center
         
@@ -40,7 +40,7 @@ class PlantDiaryViewController: BaseViewController {
         textView.isEditable = false
         textView.textAlignment = .left
         textView.text = """
-         이번달은 \(Month.april.rawValue)가 기운이 없네요...
+         이번 달은 \(Month.april.rawValue)가 기운이 없네요...
          운동이나 여가, 취미활동 등 즐거움을 얻을 수 있는 다양한 활동을 해보는 것이 좋을 것 같아요.
          매일매일 한시간 이상 야외에서 걸으면 기분을 좋게하는 호르몬인 도파민, 세로토닌 활성도가 높아져서 우울감 완화에 도움이 되고 햇볕을 쬐면 더욱 효과가 좋대요.
          자고 일어나는 시간을 규칙적으로 가져야 불면증이 생기지 않고, 충분한 수면을 취하는 것이 우울감 완화에 도움이 돼요.
@@ -55,7 +55,7 @@ class PlantDiaryViewController: BaseViewController {
 
         let attributedString = NSMutableAttributedString(string: textView.text)
         
-        attributedString.addAttributes([.font: UIFont.systemFont(ofSize: 18, weight: .bold), .foregroundColor: UIColor.baseColor2, .kern: CGFloat(2.0), .paragraphStyle: style], range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttributes([.font: UIFont(name: fontName, size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), .foregroundColor: UIColor.baseColor2, .kern: CGFloat(2.0), .paragraphStyle: style], range: NSRange(location: 0, length: attributedString.length))
         
         textView.attributedText = attributedString
         

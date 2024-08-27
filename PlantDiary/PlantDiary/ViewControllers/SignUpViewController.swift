@@ -22,30 +22,32 @@ class SignUpViewController: BaseViewController {
     
     // 아이디
     private lazy var idTextField: UITextField = {
-          let textField: UITextField = UITextField()
+        let textField: UITextField = UITextField()
         
-          textField.placeholder = "아이디"
-          textField.borderStyle = .roundedRect // 모서리 라운딩
+        textField.placeholder = "아이디"
+        textField.font = UIFont(name: fontName, size: 18)
+        textField.borderStyle = .roundedRect // 모서리 라운딩
         
-          return textField
-      }()
-      
+        return textField
+    }()
+    
     // 비밀번호
-      private lazy var passwordTextField: UITextField = {
-          let textField: UITextField = UITextField()
-          
-          textField.placeholder = "비밀번호"
-          textField.borderStyle = .roundedRect
-          textField.isSecureTextEntry = true // 비밀번호 가리기
-          
-          return textField
-      }()
+    private lazy var passwordTextField: UITextField = {
+        let textField: UITextField = UITextField()
+        
+        textField.placeholder = "비밀번호"
+        textField.font = UIFont(name: fontName, size: 18)
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true // 비밀번호 가리기
+        
+        return textField
+    }()
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
         
         button.setTitle("SignUp", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15)
+        button.titleLabel?.font = UIFont(name: fontName, size: 15)
         button.backgroundColor = .darkGray
         button.addAction(UIAction { _ in
             guard let userId = self.idTextField.text, !userId.isEmpty,
@@ -73,11 +75,11 @@ class SignUpViewController: BaseViewController {
         return stackView
     }()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     
     override func setupSubviews() {
         view.addSubview(stackView)

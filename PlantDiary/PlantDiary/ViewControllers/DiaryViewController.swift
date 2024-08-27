@@ -32,12 +32,12 @@ class DiaryViewController: BaseViewController {
         // 선택된 상태의 텍스트 색상
         let normalTextAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.baseColor,
-            .font: UIFont.boldSystemFont(ofSize: 14)
+            .font: UIFont(name: fontName, size: 14) ?? UIFont.systemFont(ofSize: 14, weight: .semibold)
         ]
         
         let selectedTextAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.baseColor,
-            .font: UIFont.boldSystemFont(ofSize: 14)
+            .font: UIFont(name: fontName, size: 14) ?? UIFont.systemFont(ofSize: 14, weight: .semibold)
         ]
         
         segmentedControl.setTitleTextAttributes(normalTextAttributes, for: .normal)
@@ -67,7 +67,7 @@ class DiaryViewController: BaseViewController {
                     \(monthDayString)이에요.
                     """
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 35, weight: .bold)
+        label.font = UIFont(name: fontName, size: 35)
         label.textColor = .baseColor
         
         return label

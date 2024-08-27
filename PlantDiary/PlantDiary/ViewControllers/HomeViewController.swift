@@ -60,7 +60,7 @@ class HomeViewController: BaseViewController {
         
         label.text = "기분이 좋지 않을 때에는 나 자신으로부터 멀어져 보세요."
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont(name: fontName, size: 13)
         label.textColor = .baseColor
         
         return label
@@ -72,6 +72,7 @@ class HomeViewController: BaseViewController {
         label.text = "Today is..."
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.font = UIFont(name: fontName, size: 40)
         label.textColor = .baseColor
         
         return label
@@ -90,7 +91,19 @@ class HomeViewController: BaseViewController {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.font = UIFont(name: fontName, size: 18)
         label.textColor = .baseColor
+        
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 3
+        style.paragraphSpacing = 5
+        style.alignment = .left
+        
+        let attributedString = NSMutableAttributedString(string: label.text ?? "")
+        
+        attributedString.addAttributes([.font: UIFont(name: fontName, size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), .foregroundColor: UIColor.baseColor, .paragraphStyle: style, ], range: NSRange(location: 0, length: attributedString.length))
+        
+        label.attributedText = attributedString
         
         return label
     }()
@@ -163,7 +176,7 @@ class HomeViewController: BaseViewController {
             
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 60),
             
-            sentimentLabel.topAnchor.constraint(equalTo: label.bottomAnchor),
+            sentimentLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20),
             
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
