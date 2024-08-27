@@ -24,7 +24,6 @@
 		EADED02C2C7D62BC00871A08 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADED02B2C7D62BC00871A08 /* CommonViewController.swift */; };
 		EADED02E2C7D684300871A08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADED02D2C7D684300871A08 /* LoginViewController.swift */; };
 		EADED0302C7D6F7B00871A08 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADED02F2C7D6F7B00871A08 /* SignUpViewController.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,7 +145,6 @@
 		8E6A9A982C7D5AD000649106 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8E6A9A922C7D588100649106 /* DiaryViewController.swift */,
 				B88466E52C7D5D13004ECA58 /* EdittingDiaryViewController.swift */,
 				B88466E72C7D5D39004ECA58 /* SentimentAnalysisViewController.swift */,
 				8E6A9A962C7D588F00649106 /* SettingViewController.swift */,
