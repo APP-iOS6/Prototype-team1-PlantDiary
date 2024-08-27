@@ -9,20 +9,17 @@ import UIKit
 
 class SentimentAnalysisViewController: BaseViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        setupViews()
-    }
-
-    private func setupViews() {
-        let titleLabel = UILabel()
-        titleLabel.text = "감정 상태 분석 결과"
-        titleLabel.textAlignment = .center
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        let resultLabel = UILabel()
-        resultLabel.text = """
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "감정 상태 분석 결과"
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var resultLabel: UILabel = {
+        let label = UILabel()
+        label.text = """
         가벼운 우울감을
         겪고 있는 상태이며,
         우울증 예방을 위해
@@ -31,42 +28,53 @@ class SentimentAnalysisViewController: BaseViewController {
         다양한 활동에 적극적으로
         참여해보는 것이 좋습니다.
         """
-        resultLabel.numberOfLines = 0
-        resultLabel.textAlignment = .center
-        resultLabel.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("뒤로가기", for: .normal)
+        button.addTarget(self, action: #selector(back), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, resultLabel, backButton])
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
 
-        let backButton = UIButton(type: .system)
-        backButton.setTitle("뒤로가기", for: .normal)
-        backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(titleLabel)
-        view.addSubview(resultLabel)
-        view.addSubview(backButton)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setupSubviews()
+        setupLayout()
+    }
 
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-
-            resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            resultLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
-            backButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-            
-            
-        ])
+    override func setupSubviews() {
+        view.addSubview(stackView)
     }
     
+    override func setupLayout() {
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+    }
+
     @objc private func back() {
         dismiss(animated: true, completion: nil)
     }
 }
-
 
 #Preview {
     SentimentAnalysisViewController()
