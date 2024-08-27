@@ -7,12 +7,14 @@
 
 import UIKit
 
-class PlantDiaryViewController: UIViewController {
+class PlantDiaryViewController: BaseViewController {
     private lazy var label: UILabel = {
         let label: UILabel = UILabel()
+        
         label.text = Month.april.rawValue
         label.font = .boldSystemFont(ofSize: 30)
         label.textAlignment = .center
+        
         return label
     }()
     
@@ -24,11 +26,13 @@ class PlantDiaryViewController: UIViewController {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 50
         imageView.layer.borderWidth = 1.5
+        
         return imageView
     }()
     
     private lazy var textView: UITextView = {
         let textView: UITextView = UITextView()
+        
         textView.backgroundColor = .systemGray6
         textView.layer.cornerRadius = 10
         textView.isEditable = false
@@ -58,23 +62,22 @@ class PlantDiaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .systemBackground
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setInterface()
     }
     
-    func setInterface() {
-        view.addSubview(label)
-        view.addSubview(imageView)
-        view.addSubview(textView)
+    override func setupSubviews() {
+        super.setupSubviews()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemBackground
+        
+        view.addSubviews([label, imageView, textView])
+    }
+    
+    override func setupLayout() {
+        super.setupLayout()
         
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
