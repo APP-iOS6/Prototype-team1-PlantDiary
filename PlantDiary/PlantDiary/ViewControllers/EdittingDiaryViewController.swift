@@ -17,7 +17,6 @@ class EdittingDiaryViewController: BaseViewController {
 //        textView.addSubview(placeholderLabel)
         textView.backgroundColor = UIColor.systemBackground
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .red
         
         return textView
     }()

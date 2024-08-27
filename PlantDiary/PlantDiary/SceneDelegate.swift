@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [homeViewController, diaryViewController, plantsCareViewController, settingViewController]
-        
+        tabBarController.tabBar.tintColor = .baseColor
         
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
