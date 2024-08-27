@@ -8,15 +8,29 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let homeViewController = UINavigationController()
+        homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house.fill"), tag: 0)
+        
+        let diaryViewController = UINavigationController()
+        diaryViewController.tabBarItem = UITabBarItem(title: "다이어리", image: UIImage(systemName: "book.fill"), tag: 1)
+        
+        let plantsCareViewController = UINavigationController()
+        plantsCareViewController.tabBarItem = UITabBarItem(title: "식물관리", image: UIImage(systemName: "leaf.fill"), tag: 2)
+        
+        let settingViewController = UINavigationController()
+        settingViewController.tabBarItem = UITabBarItem(title: "설정", image: UIImage(systemName: "gearshape.fill"), tag: 3)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [homeViewController, diaryViewController, plantsCareViewController, settingViewController]
+        
+        
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ViewController()
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 
