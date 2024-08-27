@@ -7,7 +7,50 @@
 
 import UIKit
 
+struct User {
+    var userId: String
+    var userPassword: Int
+}
+
+final class Store {
+    public static let shared = Store()
+    
+    private(set) var isLogin: Bool = false
+    
+    private var userList: [User] = []
+    
+    init() {
+        userList = [
+            User(userId: "1234", userPassword: 1234)
+        ]
+    }
+    
+    // 로그인 목록 찾기
+    func searchUser(userId: String, password: Int) -> Bool {
+        // 사용자 목록에서 id와 비밀번호를 확인
+        return userList.contains { $0.userId == userId && $0.userPassword == password }
+        // 있다면 true 반환
+    }
+    
+    // 로그인 꾸욱
+    func login(userId: String, password: Int) -> Bool {
+        if searchUser(userId: userId, password: password) {
+            isLogin = true
+            return true
+        }
+        return false
+    }
+    
+    func logout() {
+           isLogin = false
+       }
+}
+
+// MARK: HomeViewController
 class HomeViewController: CommonViewController {
+    
+    
+    private(set) var isLogin: Bool = false
     
     private let store: Store = Store.shared
     
@@ -112,7 +155,7 @@ class HomeViewController: CommonViewController {
         }
     }
     
-    // 탭 이벤트
+    // MARK: 탭 이벤트
     @objc private func handleTap() {
         if store.isLogin {
             // 로그인 된 상태에서는 동작X

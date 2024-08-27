@@ -42,8 +42,15 @@ class LoginViewController: CommonViewController {
         button.backgroundColor = .darkGray
         
         button.addAction(UIAction { _ in
-            Store.shared.islog = true
-            print("로그인: \(Store.shared.isLogin)")
+            guard let userId = self.idTextField.text, !userId.isEmpty,
+                  let passwordText = self.passwordTextField.text, !passwordText.isEmpty,
+                  let password = Int(passwordText) else {
+                return
+            }
+            
+            if Store.shared.login(userId: userId, password: password) {
+                print("로그인 성공")
+            }
         }, for: .touchUpInside)
         
         return button
