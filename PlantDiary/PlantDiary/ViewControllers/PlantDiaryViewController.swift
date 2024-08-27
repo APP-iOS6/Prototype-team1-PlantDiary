@@ -10,9 +10,11 @@ import UIKit
 class PlantDiaryViewController: BaseViewController {
     private lazy var label: UILabel = {
         let label: UILabel = UILabel()
+        
         label.text = Month.april.rawValue
         label.font = .boldSystemFont(ofSize: 30)
         label.textAlignment = .center
+        
         return label
     }()
     
@@ -24,11 +26,13 @@ class PlantDiaryViewController: BaseViewController {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 50
         imageView.layer.borderWidth = 1.5
+        
         return imageView
     }()
     
     private lazy var textView: UITextView = {
         let textView: UITextView = UITextView()
+        
         textView.backgroundColor = .systemGray6
         textView.layer.cornerRadius = 10
         textView.isEditable = false
@@ -62,7 +66,6 @@ class PlantDiaryViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setInterface()
     }
     
     override func setupSubviews() {
@@ -73,7 +76,9 @@ class PlantDiaryViewController: BaseViewController {
         view.addSubviews([label, imageView, textView])
     }
     
-    func setInterface() {
+    override func setupLayout() {
+        super.setupLayout()
+        
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

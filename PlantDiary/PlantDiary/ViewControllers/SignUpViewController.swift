@@ -10,9 +10,9 @@ import UIKit
 class SignUpViewController: BaseViewController {
     
     private lazy var imageView: UIImageView = {
-        let image: UIImage = UIImage(imageLiteralResourceName: "식물이")
+        let imageView: UIImageView = UIImageView()
         
-        let imageView: UIImageView = UIImageView(image: image)
+        imageView.image = UIImage(named: "식물이")
         
         imageView.contentMode = .scaleAspectFit
         
