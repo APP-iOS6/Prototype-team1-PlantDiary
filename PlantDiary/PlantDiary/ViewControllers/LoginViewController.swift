@@ -92,6 +92,12 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
         // 탭바 안보이게
         self.tabBarController?.tabBar.isHidden = true
+        
+        let leftButton = UIBarButtonItem(title: "←", primaryAction: UIAction { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        } )
+        
+        navigationItem.leftBarButtonItem = leftButton
     }
     
     override func viewWillDisappear(_ animated: Bool) {

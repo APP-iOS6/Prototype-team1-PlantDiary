@@ -13,16 +13,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let homeViewController = UINavigationController(rootViewController: HomeViewController())
+        let homeViewController = BaseNavigationController(rootViewController: HomeViewController())
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house.fill"), tag: 0)
         
-        let diaryViewController = UINavigationController(rootViewController: DiaryViewController())
+        let diaryViewController = BaseNavigationController(rootViewController: DiaryViewController())
         diaryViewController.tabBarItem = UITabBarItem(title: "다이어리", image: UIImage(systemName: "book.fill"), tag: 1)
         
-        let plantsCareViewController = UINavigationController(rootViewController: PlantsCareViewController())
+        let plantsCareViewController = BaseNavigationController(rootViewController: PlantsCareViewController())
         plantsCareViewController.tabBarItem = UITabBarItem(title: "식물관리", image: UIImage(systemName: "leaf.fill"), tag: 2)
         
-        let settingViewController = UINavigationController(rootViewController: SettingViewController())
+        let settingViewController = BaseNavigationController(rootViewController: SettingViewController())
         settingViewController.tabBarItem = UITabBarItem(title: "설정", image: UIImage(systemName: "gearshape.fill"), tag: 3)
         
         let tabBarController = UITabBarController()

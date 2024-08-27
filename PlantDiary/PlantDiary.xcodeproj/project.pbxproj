@@ -19,6 +19,7 @@
 		8E6A9A932C7D588100649106 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A922C7D588100649106 /* DiaryViewController.swift */; };
 		8E6A9A952C7D588900649106 /* PlantsCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */; };
 		8E6A9A972C7D588F00649106 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A962C7D588F00649106 /* SettingViewController.swift */; };
+		8E6A9A9C2C7DE90C00649106 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A9B2C7DE90C00649106 /* BaseNavigationController.swift */; };
 		B88466E62C7D5D13004ECA58 /* EdittingDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88466E52C7D5D13004ECA58 /* EdittingDiaryViewController.swift */; };
 		B88466E82C7D5D39004ECA58 /* SentimentAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88466E72C7D5D39004ECA58 /* SentimentAnalysisViewController.swift */; };
 		EADED02C2C7D62BC00871A08 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADED02B2C7D62BC00871A08 /* BaseViewController.swift */; };
@@ -60,6 +61,7 @@
 		8E6A9A922C7D588100649106 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsCareViewController.swift; sourceTree = "<group>"; };
 		8E6A9A962C7D588F00649106 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		8E6A9A9B2C7DE90C00649106 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		B88466E52C7D5D13004ECA58 /* EdittingDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingDiaryViewController.swift; sourceTree = "<group>"; };
 		B88466E72C7D5D39004ECA58 /* SentimentAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalysisViewController.swift; sourceTree = "<group>"; };
 		EADED02B2C7D62BC00871A08 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				EADED02B2C7D62BC00871A08 /* BaseViewController.swift */,
+				8E6A9A9B2C7DE90C00649106 /* BaseNavigationController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E6A9A9C2C7DE90C00649106 /* BaseNavigationController.swift in Sources */,
 				8E6A9A932C7D588100649106 /* DiaryViewController.swift in Sources */,
 				8E6A9A612C7D4E6A00649106 /* AppDelegate.swift in Sources */,
 				B88466E82C7D5D39004ECA58 /* SentimentAnalysisViewController.swift in Sources */,
