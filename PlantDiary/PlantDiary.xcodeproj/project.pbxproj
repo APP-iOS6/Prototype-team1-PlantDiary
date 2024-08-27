@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		8E6A9A612C7D4E6A00649106 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A602C7D4E6A00649106 /* AppDelegate.swift */; };
 		8E6A9A632C7D4E6A00649106 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A622C7D4E6A00649106 /* SceneDelegate.swift */; };
-		8E6A9A652C7D4E6A00649106 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A642C7D4E6A00649106 /* ViewController.swift */; };
 		8E6A9A6A2C7D4E6B00649106 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E6A9A692C7D4E6B00649106 /* Assets.xcassets */; };
 		8E6A9A6D2C7D4E6B00649106 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E6A9A6C2C7D4E6B00649106 /* Base */; };
 		8E6A9A782C7D4E6B00649106 /* PlantDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A772C7D4E6B00649106 /* PlantDiaryTests.swift */; };
 		8E6A9A822C7D4E6B00649106 /* PlantDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A812C7D4E6B00649106 /* PlantDiaryUITests.swift */; };
 		8E6A9A842C7D4E6B00649106 /* PlantDiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A832C7D4E6B00649106 /* PlantDiaryUITestsLaunchTests.swift */; };
+		8E6A9A912C7D587300649106 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A902C7D587300649106 /* HomeViewController.swift */; };
+		8E6A9A932C7D588100649106 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A922C7D588100649106 /* DiaryViewController.swift */; };
+		8E6A9A952C7D588900649106 /* PlantsCareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */; };
+		8E6A9A972C7D588F00649106 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6A9A962C7D588F00649106 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,6 @@
 		8E6A9A5D2C7D4E6A00649106 /* PlantDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6A9A602C7D4E6A00649106 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E6A9A622C7D4E6A00649106 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8E6A9A642C7D4E6A00649106 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8E6A9A692C7D4E6B00649106 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E6A9A6C2C7D4E6B00649106 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E6A9A6E2C7D4E6B00649106 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		8E6A9A7D2C7D4E6B00649106 /* PlantDiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantDiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6A9A812C7D4E6B00649106 /* PlantDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDiaryUITests.swift; sourceTree = "<group>"; };
 		8E6A9A832C7D4E6B00649106 /* PlantDiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8E6A9A902C7D587300649106 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8E6A9A922C7D588100649106 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsCareViewController.swift; sourceTree = "<group>"; };
+		8E6A9A962C7D588F00649106 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +105,7 @@
 			children = (
 				8E6A9A602C7D4E6A00649106 /* AppDelegate.swift */,
 				8E6A9A622C7D4E6A00649106 /* SceneDelegate.swift */,
-				8E6A9A642C7D4E6A00649106 /* ViewController.swift */,
+				8E6A9A982C7D5AD000649106 /* ViewControllers */,
 				8E6A9A692C7D4E6B00649106 /* Assets.xcassets */,
 				8E6A9A6B2C7D4E6B00649106 /* LaunchScreen.storyboard */,
 				8E6A9A6E2C7D4E6B00649106 /* Info.plist */,
@@ -122,6 +128,17 @@
 				8E6A9A832C7D4E6B00649106 /* PlantDiaryUITestsLaunchTests.swift */,
 			);
 			path = PlantDiaryUITests;
+			sourceTree = "<group>";
+		};
+		8E6A9A982C7D5AD000649106 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E6A9A962C7D588F00649106 /* SettingViewController.swift */,
+				8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */,
+				8E6A9A922C7D588100649106 /* DiaryViewController.swift */,
+				8E6A9A902C7D587300649106 /* HomeViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E6A9A652C7D4E6A00649106 /* ViewController.swift in Sources */,
+				8E6A9A932C7D588100649106 /* DiaryViewController.swift in Sources */,
 				8E6A9A612C7D4E6A00649106 /* AppDelegate.swift in Sources */,
 				8E6A9A632C7D4E6A00649106 /* SceneDelegate.swift in Sources */,
+				8E6A9A912C7D587300649106 /* HomeViewController.swift in Sources */,
+				8E6A9A972C7D588F00649106 /* SettingViewController.swift in Sources */,
+				8E6A9A952C7D588900649106 /* PlantsCareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
