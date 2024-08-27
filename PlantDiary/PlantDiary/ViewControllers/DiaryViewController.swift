@@ -121,21 +121,6 @@ class DiaryViewController: UIViewController {
 }
 
 extension DiaryViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
-
-//    func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-//        if let selectedDate = selectedDate, selectedDate == dateComponents {
-//            return .customView {
-//                let label = UILabel()
-//                label.text = "🐶"
-//                label.textAlignment = .center
-//                return label
-//            }
-//        }
-//        return nil
-//    }
-//
-    
-    // 달력에서 날짜 선택했을 경우
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         selection.setSelected(dateComponents, animated: true)
         selectedDate = dateComponents
@@ -143,40 +128,23 @@ extension DiaryViewController: UICalendarViewDelegate, UICalendarSelectionSingle
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             selection.setSelected(nil, animated: true)
-            
-            print("test")
         }
         
         if segmentFlag == SegmentFlag.diary.rawValue {
-            // 시트 띄우기
-            let test = PlantsCareViewController()
+            let edittingDiaryViewController = EdittingDiaryViewController()
             
-            test.modalPresentationStyle = .formSheet
-            present(test, animated: true)
+            edittingDiaryViewController.modalPresentationStyle = .formSheet
+            present(edittingDiaryViewController, animated: true)
         } else {
-            let test = PlantsCareViewController()
+            let sentimentAnalysisViewController = SentimentAnalysisViewController()
             
-            test.modalPresentationStyle = .formSheet
-            present(test, animated: true)
+            sentimentAnalysisViewController.modalPresentationStyle = .formSheet
+            present(sentimentAnalysisViewController, animated: true)
         }
     }
 }
 
-extension UIView {
-    func addSubviews(_ views: [UIView]) {
-        for view in views {
-            addSubview(view)
-        }
-    }
-}
 
-extension UIStackView {
-    func addArrangedSubviews(_ views: [UIView]) {
-        for view in views {
-            addArrangedSubview(view)
-        }
-    }
-}
 
 #Preview {
     DiaryViewController()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SentimentAnalysisViewController: UIViewController {
+class SentimentAnalysisViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
