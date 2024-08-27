@@ -22,19 +22,22 @@ enum Month: String, CaseIterable {
     case december = "Dec"
 }
 
-class PlantsCareViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+class PlantsCareViewController: BaseViewController {
     private var verticalSpacing: CGFloat = 60
     private let horizontalSpacing: CGFloat = 30
     
     private lazy var collectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
+        
         layout.scrollDirection = .vertical
         
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        
         return collectionView
     }()
 
@@ -46,21 +49,27 @@ class PlantsCareViewController: UIViewController, UICollectionViewDelegateFlowLa
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setInterface()
     }
     
-    func setInterface() {
-        view.addSubview(collectionView)
+    override func setupSubviews() {
+        super.setupSubviews()
         
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(collectionView)
+    }
+    
+    override func setupLayout() {
+        super.setupLayout()
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])
     }
+}
+
+extension PlantsCareViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         Month.allCases.count
@@ -70,6 +79,7 @@ class PlantsCareViewController: UIViewController, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath)
         let stackView: UIStackView = UIStackView()
+        
         stackView.frame = cell.bounds
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -77,7 +87,7 @@ class PlantsCareViewController: UIViewController, UICollectionViewDelegateFlowLa
         
         let imageView = UIImageView()
         
-        // 데이터 있는 경우에만 이미지 띄워주고 나머진 Questionmark로 구분 
+        // 데이터 있는 경우에만 이미지 띄워주고 나머진 Questionmark로 구분
         // 4월에만 데이터 있다고 가정할게요!
         // 추후엔 데이터 유무로 분기처리
         if indexPath.row == 3 {
@@ -85,10 +95,12 @@ class PlantsCareViewController: UIViewController, UICollectionViewDelegateFlowLa
         } else {
             imageView.image = UIImage(systemName: "questionmark.bubble.fill")
         }
+        
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = UIColor.lightGray
         
         let label = UILabel()
+        
         label.text = Month.allCases[indexPath.row].rawValue
         label.font = .boldSystemFont(ofSize: 15)
         
@@ -115,6 +127,7 @@ class PlantsCareViewController: UIViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - (4 * horizontalSpacing)) / 3
+        
         return CGSize(width: width, height: width)
     }
     
