@@ -49,20 +49,30 @@ class LoginViewController: BaseViewController {
         button.titleLabel?.font = UIFont(name: fontName, size: 15)
         button.backgroundColor = .darkGray
         
-        button.addAction(UIAction { _ in
-            guard let userId = self.idTextField.text, !userId.isEmpty,
-                  let password = self.passwordTextField.text, !password.isEmpty
-                  else {
+        button.addAction(UIAction { [weak self] _ in
+            guard let self = self,
+                  let userId = self.idTextField.text, !userId.isEmpty,
+                  let passwordText = self.passwordTextField.text, !passwordText.isEmpty,
+                  let password = Int(passwordText) else {
                 return
             }
+            
             if Store.shared.login(userId: userId, password: password) {
-                print("로그인 성공")
-                self.navigationController?.popViewController(animated: true) // 화면 뒤로가기
+                let successAlert = UIAlertController(title: "성공", message: "로그인 성공", preferredStyle: .alert)
+                successAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
+                    self.navigationController?.popViewController(animated: true) // 화면 뒤로가기
+                }))
+                self.present(successAlert, animated: true, completion: nil)
+            } else {
+                let failureAlert = UIAlertController(title: "실패", message: "로그인 실패. 사용자 ID 또는 비밀번호를 확인하세요.", preferredStyle: .alert)
+                failureAlert.addAction(UIAlertAction(title: "확인", style: .default))
+                self.present(failureAlert, animated: true, completion: nil)
             }
         }, for: .touchUpInside)
         
         return button
     }()
+    
     
     // 회원가입으로 넘어가는 버튼
     private lazy var signUpButton: UIButton = {
