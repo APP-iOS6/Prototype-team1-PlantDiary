@@ -11,16 +11,16 @@ class EdittingDiaryViewController: BaseViewController {
     private let emotions = ["#기쁨", "#슬픔", "#우울함", "#화남", "#평범함"]
     private var selectedEmotion: String?
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.text = "당신의 오늘은 어땠나요?"
-        label.font = UIFont(name: fontName, size: 18)
-        label.textColor = .baseColor
-        label.textAlignment = .left
-        
-        return label
-    }()
+//    private lazy var titleLabel: UILabel = {
+//        let label = UILabel()
+//        
+//        label.text = "당신의 오늘은 어땠나요?"
+//        label.font = UIFont(name: fontName, size: 18)
+//        label.textColor = .baseColor
+//        label.textAlignment = .left
+//        
+//        return label
+//    }()
     
     private lazy var textView: UITextView = {
         let textView = UITextView()
@@ -48,7 +48,7 @@ class EdittingDiaryViewController: BaseViewController {
     private lazy var placeholderLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "감정노트예요."
+        label.text = "당신의 오늘은 어땠나요?"
         label.font = UIFont(name: fontName, size: 16)
         label.textColor = .lightGray
         
@@ -58,12 +58,10 @@ class EdittingDiaryViewController: BaseViewController {
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         
-        let image = UIImage(systemName: "square.and.arrow.down.on.square")
-        let resizeImage = image?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
-        
-        button.setImage(resizeImage, for: .normal)
-        button.tintColor = .baseColor
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitle("저장", for: .normal)
+        button.setTitleColor(.baseColor, for: .normal)
+        button.titleLabel?.font = UIFont(name: fontName, size: 18)
+        button.setTitleColor(.baseColor, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
             let alert = UIAlertController(title: nil, message: "저장할까요?", preferredStyle: .alert)
@@ -84,12 +82,9 @@ class EdittingDiaryViewController: BaseViewController {
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         
-        let image = UIImage(systemName: "xmark")
-        let resizeImage = image?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
-        
-        button.setImage(resizeImage, for: .normal)
-        button.tintColor = .baseColor
-        button.setTitleColor(.systemRed, for: .normal)
+        button.setTitle("취소", for: .normal)
+        button.setTitleColor(.baseColor, for: .normal)
+        button.titleLabel?.font = UIFont(name: fontName, size: 18)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
             let alert = UIAlertController(title: nil, message: "일지 작성을 취소할까요?", preferredStyle: .alert)
@@ -130,41 +125,37 @@ class EdittingDiaryViewController: BaseViewController {
     override func setupSubviews() {
         super.setupSubviews()
         
-        hStackView.addArrangedSubviews([emotionPicker, saveButton, cancelButton])
+        hStackView.addArrangedSubviews([cancelButton, saveButton])
         
-        view.addSubviews([titleLabel, imageView, textView, placeholderLabel, hStackView])
+        view.addSubviews([hStackView, textView, placeholderLabel])
     }
     
     override func setupLayout() {
         super.setupLayout()
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: textView.leadingAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            titleLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -30),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            hStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            hStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            hStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             
-            textView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
-            textView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10),
-            textView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 10),
-            textView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
+//            titleLabel.leadingAnchor.constraint(equalTo: textView.leadingAnchor),
+//            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+//            titleLabel.heightAnchor.constraint(equalToConstant: 50),
+//            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+//            textView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
+//            textView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10),
+//            textView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 10),
+//            textView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
             
-            imageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            imageView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -20),
+            textView.topAnchor.constraint(equalTo: hStackView.bottomAnchor, constant: 20),
+            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             
             placeholderLabel.topAnchor.constraint(equalTo: textView.topAnchor, constant: 8),
             placeholderLabel.leadingAnchor.constraint(equalTo: textView.leadingAnchor, constant: 5),
             placeholderLabel.trailingAnchor.constraint(equalTo: textView.trailingAnchor, constant: -5),
-            
-            emotionPicker.widthAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 0.5),
-            emotionPicker.heightAnchor.constraint(equalToConstant: 60),
-            
-            hStackView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-            hStackView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -20),
-            hStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-            hStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -176,6 +167,18 @@ class EdittingDiaryViewController: BaseViewController {
 extension EdittingDiaryViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         updatePlaceholderVisibility()
+    }
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 6
+        style.paragraphSpacing = 12
+
+        let attributedString = NSMutableAttributedString(string: textView.text)
+        
+        attributedString.addAttributes([.font: UIFont(name: fontName, size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold), .foregroundColor: UIColor.black, .kern: CGFloat(2.0), .paragraphStyle: style], range: NSRange(location: 0, length: attributedString.length))
+        
+        textView.attributedText = attributedString
     }
 }
 

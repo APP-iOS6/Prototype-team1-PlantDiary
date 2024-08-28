@@ -34,32 +34,6 @@ class SettingViewController: BaseViewController {
         return imageView
     }()
     
-    // 회원가입으로 넘어가는 버튼
-    private lazy var logOutButton: UIButton = {
-        let button = UIButton()
-        
-        button.configuration = .plain()
-        button.configuration?.image = UIImage(systemName: "xmark.circle.fill")
-        button.configuration?.imagePadding = 5
-        button.configuration?.imagePlacement = .leading
-        button.configuration?.title = "LogOut"
-        button.tintColor = .red
-        
-        button.addAction(UIAction { [weak self] _ in
-            self?.store.logout() // 로그아웃
-            
-            // SceneDelegate에서 설정한 탭바의 첫 번째 탭(HomeViewController)으로 이동
-            if let tabBarController = self?.view.window?.rootViewController as? UITabBarController {
-                tabBarController.selectedIndex = 0  // 첫 번째 탭 선택
-                self?.navigationController?.popToRootViewController(animated: true)
-            }
-            
-            print("로그아웃 성공")
-        }, for: .touchUpInside)
-        
-        return button
-    }()
-    
     private lazy var stackView: UIStackView = {
         let stackView: UIStackView = UIStackView()
         
@@ -200,6 +174,32 @@ class SettingViewController: BaseViewController {
         uIView.translatesAutoresizingMaskIntoConstraints = false
         
         return uIView
+    }()
+    
+    // 회원가입으로 넘어가는 버튼
+    private lazy var logOutButton: UIButton = {
+        let button = UIButton()
+        
+        button.configuration = .plain()
+        button.configuration?.image = UIImage(systemName: "xmark.circle.fill")
+        button.configuration?.imagePadding = 5
+        button.configuration?.imagePlacement = .leading
+        button.configuration?.title = "LogOut"
+        button.tintColor = .baseColor
+        
+        button.addAction(UIAction { [weak self] _ in
+            self?.store.logout() // 로그아웃
+            
+            // SceneDelegate에서 설정한 탭바의 첫 번째 탭(HomeViewController)으로 이동
+            if let tabBarController = self?.view.window?.rootViewController as? UITabBarController {
+                tabBarController.selectedIndex = 0  // 첫 번째 탭 선택
+                self?.navigationController?.popToRootViewController(animated: true)
+            }
+            
+            print("로그아웃 성공")
+        }, for: .touchUpInside)
+        
+        return button
     }()
     
     override func viewDidLoad() {

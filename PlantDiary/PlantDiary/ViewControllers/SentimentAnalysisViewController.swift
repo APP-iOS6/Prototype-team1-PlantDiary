@@ -48,23 +48,8 @@ class SentimentAnalysisViewController: BaseViewController {
         return label
     }()
     
-    private lazy var backButton: UIButton = {
-        let button = UIButton(type: .system)
-        
-        let image = UIImage(systemName: "arrow.clockwise")
-        let resizeImage = image?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
-        
-        button.setImage(resizeImage, for: .normal)
-        button.tintColor = .baseColor
-        button.addAction(UIAction { [weak self] _ in
-            self?.back()
-        }, for: .touchUpInside)
-        
-        return button
-    }()
-    
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, resultLabel, backButton])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, resultLabel])
         
         stackView.axis = .vertical
         stackView.spacing = 55
