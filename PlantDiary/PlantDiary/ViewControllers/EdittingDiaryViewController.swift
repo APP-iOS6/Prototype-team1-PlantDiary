@@ -83,7 +83,7 @@ class EdittingDiaryViewController: BaseViewController {
         let button = UIButton()
         
         button.setTitle("취소", for: .normal)
-        button.setTitleColor(.baseColor, for: .normal)
+        button.setTitleColor(.cancelColor, for: .normal)
         button.titleLabel?.font = UIFont(name: fontName, size: 18)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in

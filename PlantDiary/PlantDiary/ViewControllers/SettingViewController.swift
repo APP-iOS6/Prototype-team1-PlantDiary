@@ -43,7 +43,7 @@ class SettingViewController: BaseViewController {
         button.configuration?.imagePadding = 5
         button.configuration?.imagePlacement = .leading
         button.configuration?.title = "LogOut"
-        button.tintColor = .red
+        button.tintColor = .baseColor
         
         // 로그아웃 알림 창 추가
         button.addAction(UIAction { [weak self] _ in
@@ -66,7 +66,6 @@ class SettingViewController: BaseViewController {
             }))
             self?.present(alert, animated: true, completion: nil)
         }, for: .touchUpInside)
-        
         
         return button
     }()

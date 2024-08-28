@@ -52,8 +52,8 @@ class LoginViewController: BaseViewController {
         button.addAction(UIAction { [weak self] _ in
             guard let self = self,
                   let userId = self.idTextField.text, !userId.isEmpty,
-                  let passwordText = self.passwordTextField.text, !passwordText.isEmpty,
-                  let password = Int(passwordText) else {
+                  let password = self.passwordTextField.text, !password.isEmpty
+            else {
                 return
             }
             
@@ -79,7 +79,7 @@ class LoginViewController: BaseViewController {
         let button = UIButton()
         
         button.setTitle("SignUp", for: .normal)
-        button.titleLabel?.font = UIFont(name: fontName, size: 15) 
+        button.titleLabel?.font = UIFont(name: fontName, size: 15)
         button.backgroundColor = .darkGray
         button.addAction(UIAction { _ in
             let viewController = SignUpViewController()

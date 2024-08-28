@@ -51,8 +51,8 @@ class SignUpViewController: BaseViewController {
         button.backgroundColor = .darkGray
         button.addAction(UIAction { _ in
             guard let userId = self.idTextField.text, !userId.isEmpty,
-                  let passwordText = self.passwordTextField.text, !passwordText.isEmpty,
-                  let password = Int(passwordText) else {
+                  let password = self.passwordTextField.text, !password.isEmpty
+            else {
                 return
             }
             self.store.addUser(userId: userId, password: password)
