@@ -118,11 +118,11 @@ extension PlantsCareViewController: UICollectionViewDelegateFlowLayout, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let plantDiaryViewController = PlantDiaryViewController()
-        
+        plantDiaryViewController.month = Month.allCases[indexPath.row]
         // 데이터가 있는 경우 각 일지를 띄워준다
         // 4월에만 데이터 있다고 가정할게요!
         // 추후엔 데이터 유무로 분기처리
-        if indexPath.row == 3 {
+        if indexPath.row == 3 || indexPath.row == 6 {
             plantDiaryViewController.modalPresentationStyle = .pageSheet
             self.present(plantDiaryViewController, animated: true)
         } else if indexPath.row == 5 {
