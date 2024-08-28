@@ -106,9 +106,7 @@ class DiaryViewController: BaseViewController {
         
         vStackView.addArrangedSubviews([todayDateLabel, dateView])
         
-        subView.addSubview(vStackView)
-        
-        view.addSubviews([subView, segmentedControl])
+        view.addSubviews([vStackView, segmentedControl])
     }
     
     override func setupLayout() {
@@ -117,20 +115,16 @@ class DiaryViewController: BaseViewController {
         let safeGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            segmentedControl.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor),
-            segmentedControl.topAnchor.constraint(equalTo: vStackView.bottomAnchor, constant: 20),
-            segmentedControl.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
+            todayDateLabel.heightAnchor.constraint(equalToConstant: 150),
             
-            subView.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 20),
-            subView.centerYAnchor.constraint(equalTo: safeGuide.centerYAnchor, constant: 20),
-            subView.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: 100), 
-            
+            vStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 30),
             vStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 20),
             vStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -20),
-            vStackView.centerXAnchor.constraint(equalTo: subView.centerXAnchor),
-            vStackView.widthAnchor.constraint(equalTo: subView.widthAnchor),
-            vStackView.topAnchor.constraint(equalTo: subView.topAnchor),
-            vStackView.bottomAnchor.constraint(equalTo: subView.bottomAnchor),
+            vStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor, constant: -50),
+            
+            segmentedControl.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: vStackView.bottomAnchor),
         ])
     }
     

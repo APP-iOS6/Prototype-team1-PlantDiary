@@ -14,7 +14,7 @@ struct User {
 
 final class Store {
     public static let shared = Store()
-    private(set) var isLogin: Bool = false
+    private(set) var isLogin: Bool = true
     private var userList: [User] = []
     public var loginId: String = ""
     
@@ -123,7 +123,7 @@ class HomeViewController: BaseViewController {
         let stackView: UIStackView = UIStackView()
         
         stackView.axis = .vertical
-        stackView.spacing = 50
+        stackView.spacing = 10
         
         return stackView
     }()
@@ -171,17 +171,13 @@ class HomeViewController: BaseViewController {
             tipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tipLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             
-            imageView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -100),
             imageView.heightAnchor.constraint(equalTo: stackView.widthAnchor),
             
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 60),
+            label.heightAnchor.constraint(equalToConstant: 70),
             
-            sentimentLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20),
-            
+            stackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 00),
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70),
             stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
         ])
     }
