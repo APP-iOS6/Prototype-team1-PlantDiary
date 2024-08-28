@@ -14,7 +14,7 @@ struct User {
 
 final class Store {
     public static let shared = Store()
-    private(set) var isLogin: Bool = true
+    private(set) var isLogin: Bool = false
     private var userList: [User] = []
     public var loginId: String = ""
     
