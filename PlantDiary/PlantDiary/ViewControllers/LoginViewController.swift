@@ -51,8 +51,8 @@ class LoginViewController: BaseViewController {
         
         button.addAction(UIAction { _ in
             guard let userId = self.idTextField.text, !userId.isEmpty,
-                  let passwordText = self.passwordTextField.text, !passwordText.isEmpty,
-                  let password = Int(passwordText) else {
+                  let password = self.passwordTextField.text, !password.isEmpty
+                  else {
                 return
             }
             if Store.shared.login(userId: userId, password: password) {
