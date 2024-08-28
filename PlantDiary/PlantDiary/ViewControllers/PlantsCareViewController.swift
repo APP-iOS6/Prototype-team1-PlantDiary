@@ -90,7 +90,7 @@ extension PlantsCareViewController: UICollectionViewDelegateFlowLayout, UICollec
         // 4월에만 데이터 있다고 가정할게요!
         // 추후엔 데이터 유무로 분기처리
         if indexPath.row == 3 {
-            imageView.image = UIImage(named: "식물이")
+            imageView.image = UIImage(named: "DummyPlant")
         } else {
             imageView.image = UIImage(systemName: "leaf.fill")
         }

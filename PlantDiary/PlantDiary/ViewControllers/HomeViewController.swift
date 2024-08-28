@@ -111,7 +111,7 @@ class HomeViewController: BaseViewController {
     private lazy var imageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
         
-        imageView.image = UIImage(named: "식물이")
+        imageView.image = UIImage(named: "DummyPlant")
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false

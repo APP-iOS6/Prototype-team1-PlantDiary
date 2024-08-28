@@ -35,7 +35,7 @@ class EdittingDiaryViewController: BaseViewController {
     private lazy var imageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
         
-        imageView.image = UIImage(named: "일기장")
+        imageView.image = UIImage(named: "Diary")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 15

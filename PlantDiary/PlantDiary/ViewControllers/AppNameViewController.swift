@@ -11,7 +11,7 @@ class AppNameViewController: BaseViewController {
     private lazy var appNameImageView: UIImageView = {
         let imageView = UIImageView()
         
-        let image = UIImage(named: "앱이름")
+        let image = UIImage(named: "AppName")
         
         imageView.image = image
         imageView.contentMode = .scaleAspectFit

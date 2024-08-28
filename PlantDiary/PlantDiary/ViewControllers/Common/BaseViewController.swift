@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
         setupSubviews()
         setupLayout()
         
-        setTitle(andImage: UIImage(named: "앱이름")!)
+        setTitle(andImage: UIImage(named: "AppName")!)
         
         let tabBarAppearance = UITabBarAppearance()
         
