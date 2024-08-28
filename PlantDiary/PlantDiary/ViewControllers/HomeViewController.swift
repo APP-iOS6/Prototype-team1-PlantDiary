@@ -9,7 +9,7 @@ import UIKit
 
 struct User {
     var userId: String
-    var userPassword: String
+    var userPassword: Int
 }
 
 final class Store {
@@ -20,19 +20,19 @@ final class Store {
     
     init() {
         userList = [
-            User(userId: "1234", userPassword: "1234")
+            User(userId: "1234", userPassword: 1234)
         ]
     }
     
     // 로그인 목록 찾기
-    func searchUser(userId: String, password: String) -> Bool {
+    func searchUser(userId: String, password: Int) -> Bool {
         // 사용자 목록에서 id와 비밀번호를 확인
         return userList.contains { $0.userId == userId && $0.userPassword == password }
         // 있다면 true 반환
     }
     
     // 로그인 꾸욱
-    func login(userId: String, password: String) -> Bool {
+    func login(userId: String, password: Int) -> Bool {
         if searchUser(userId: userId, password: password) {
             isLogin = true
             loginId = userId
@@ -45,7 +45,7 @@ final class Store {
         isLogin = false
     }
     
-    public func addUser(userId: String, password: String)  {
+    public func addUser(userId: String, password: Int)  {
         let user = User(userId: userId, userPassword: password)
         userList.append(user)
     }
