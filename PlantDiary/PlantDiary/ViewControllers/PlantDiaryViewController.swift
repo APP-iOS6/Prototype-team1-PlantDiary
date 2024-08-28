@@ -45,16 +45,16 @@ class PlantDiaryViewController: BaseViewController {
         textView.textAlignment = .left
         textView.text = if month == .april {
             """
-            이번 달은 \(month.rawValue)가 파릇파릇 기분이 좋아보이네요!!
-            앞으로도 \(month.rawValue)의 매일이 행복한 하루였으면 좋겠어요.
-            아침은 희망의 시작이란 말이 있어요. 햇살이 부드럽게 스며드는 아침, 따듯한 인사로 하루를 기분 좋게 시작해봐요. 아침의 인사가 당신에게 전해지는 힘이 되길 바라요.
+             이번 달은 \(month.rawValue)가 파릇파릇 기분이 좋아보이네요!!
+             앞으로도 \(month.rawValue)의 매일이 행복한 하루였으면 좋겠어요.
+             아침은 희망의 시작이란 말이 있어요. 햇살이 부드럽게 스며드는 아침, 따듯한 인사로 하루를 기분 좋게 시작해봐요. 아침의 인사가 당신에게 전해지는 힘이 되길 바라요.
             """
         } else {
             """
-                이번 달은 \(month.rawValue)가 기운이 없네요...
-                운동이나 여가, 취미활동 등 즐거움을 얻을 수 있는 다양한 활동을 해보는 것이 좋을 것 같아요.
-                매일매일 한시간 이상 야외에서 걸으면 기분을 좋게하는 호르몬인 도파민, 세로토닌 활성도가 높아져서 우울감 완화에 도움이 되고 햇볕을 쬐면 더욱 효과가 좋대요.
-                자고 일어나는 시간을 규칙적으로 가져야 불면증이 생기지 않고, 충분한 수면을 취하는 것이 우울감 완화에 도움이 돼요.
+             이번 달은 \(month.rawValue)가 기운이 없네요...
+             운동이나 여가, 취미활동 등 즐거움을 얻을 수 있는 다양한 활동을 해보는 것이 좋을 것 같아요.
+             매일매일 한시간 이상 야외에서 걸으면 기분을 좋게하는 호르몬인 도파민, 세로토닌 활성도가 높아져서 우울감 완화에 도움이 되고 햇볕을 쬐면 더욱 효과가 좋대요.
+             자고 일어나는 시간을 규칙적으로 가져야 불면증이 생기지 않고, 충분한 수면을 취하는 것이 우울감 완화에 도움이 돼요.
             """
         }
         textView.textColor = .baseColor
@@ -83,7 +83,6 @@ class PlantDiaryViewController: BaseViewController {
         
         label.text = month.rawValue
         imageView.image = UIImage(named: data[month] ?? "DummyPlant")
-        print("\(data[month] ?? "메롱")")
     }
     
     override func setupSubviews() {

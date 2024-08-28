@@ -156,10 +156,10 @@
 			children = (
 				8E6A9A902C7D587300649106 /* HomeViewController.swift */,
 				8E6A9A922C7D588100649106 /* DiaryViewController.swift */,
-				8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */,
-				6EC020242C7D7EE40045408A /* PlantDiaryViewController.swift */,
 				B88466E52C7D5D13004ECA58 /* EdittingDiaryViewController.swift */,
 				B88466E72C7D5D39004ECA58 /* SentimentAnalysisViewController.swift */,
+				8E6A9A942C7D588900649106 /* PlantsCareViewController.swift */,
+				6EC020242C7D7EE40045408A /* PlantDiaryViewController.swift */,
 				8E6A9A962C7D588F00649106 /* SettingViewController.swift */,
 				EADED02D2C7D684300871A08 /* LoginViewController.swift */,
 				EADED02F2C7D6F7B00871A08 /* SignUpViewController.swift */,

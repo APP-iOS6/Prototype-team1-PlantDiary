@@ -10,6 +10,7 @@ import UIKit
 class EdittingDiaryViewController: BaseViewController {
     private let emotions = ["#기쁨", "#슬픔", "#우울함", "#화남", "#평범함"]
     private var selectedEmotion: String?
+    public var addDiary: (() -> ())?
 
 //    private lazy var titleLabel: UILabel = {
 //        let label = UILabel()
@@ -66,9 +67,10 @@ class EdittingDiaryViewController: BaseViewController {
         button.addAction(UIAction { [weak self] _ in
             let alert = UIAlertController(title: nil, message: "저장할까요?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "취소", style: .cancel))
-            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
                 let confirmationAlert = UIAlertController(title: nil, message: "저장 되었습니다!", preferredStyle: .alert)
                 confirmationAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
+                    self?.addDiary?()
                     self?.dismiss(animated: true, completion: nil)
                 }))
                 self?.present(confirmationAlert, animated: true, completion: nil)

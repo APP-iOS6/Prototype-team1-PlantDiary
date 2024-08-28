@@ -16,6 +16,7 @@ class DiaryViewController: BaseViewController {
     
     private var segmentFlag: String = SegmentFlag.diary.rawValue
     private var selectedDate: DateComponents? = nil
+    private var flag = false
     
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["일기 관리", "감정 분석 관리"])
@@ -149,9 +150,28 @@ class DiaryViewController: BaseViewController {
 
 extension DiaryViewController: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
     
+    func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
+        
+        if dateComponents == selectedDate && flag {
+            flag = false
+            
+            return .customView {
+                let label = UILabel()
+                
+                label.text = "✓"
+                label.textAlignment = .center
+                
+                return label
+            }
+        }
+        
+        return nil
+    }
+    
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         selection.setSelected(dateComponents, animated: true)
         selectedDate = dateComponents
+        
         reloadDateView(date: Calendar.current.date(from: dateComponents!))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -161,6 +181,12 @@ extension DiaryViewController: UICalendarViewDelegate, UICalendarSelectionSingle
         if segmentFlag == SegmentFlag.diary.rawValue {
             let edittingDiaryViewController = EdittingDiaryViewController()
             
+            edittingDiaryViewController.addDiary = { [weak self] in
+                self?.flag = true
+                if let selectedDate = self?.selectedDate {
+                    self?.dateView.reloadDecorations(forDateComponents: [selectedDate], animated: true)
+                }
+            }
             edittingDiaryViewController.modalPresentationStyle = .formSheet
             present(edittingDiaryViewController, animated: true)
         } else {
