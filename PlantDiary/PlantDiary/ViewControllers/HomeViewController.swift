@@ -82,12 +82,12 @@ class HomeViewController: BaseViewController {
         let label: UILabel = UILabel()
         
         label.text = """
-                        여느 때와 같은 평범한 날이지만,
-                        미래로 통하는 가장 중요한 시간,
-                        잘 보내셨길 바랄게요.
-                    
-                        오늘 하루도 고생하셨어요.
-                    """
+                     여느 때와 같은 평범한 날이지만,
+                     미래로 통하는 가장 중요한 시간,
+                     잘 보내셨길 바랄게요.
+                     
+                     오늘 하루도 고생하셨어요.
+                     """
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -184,8 +184,8 @@ class HomeViewController: BaseViewController {
     
     private func addTabBarGesture() {
         // 화면 클릭 시 로그인 화면
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tapGestureRecognizer)
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+//        view.addGestureRecognizer(tapGestureRecognizer)
         
         // 탭바 제스처 추가
         if let tabBar = self.tabBarController?.tabBar {

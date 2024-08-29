@@ -58,11 +58,7 @@ class LoginViewController: BaseViewController {
             }
             
             if Store.shared.login(userId: userId, password: password) {
-                let successAlert = UIAlertController(title: "성공", message: "로그인 성공", preferredStyle: .alert)
-                successAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
-                    self.navigationController?.popViewController(animated: true) // 화면 뒤로가기
-                }))
-                self.present(successAlert, animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true) // 화면
             } else {
                 let failureAlert = UIAlertController(title: "실패", message: "로그인 실패. 사용자 ID 또는 비밀번호를 확인하세요.", preferredStyle: .alert)
                 failureAlert.addAction(UIAlertAction(title: "확인", style: .default))

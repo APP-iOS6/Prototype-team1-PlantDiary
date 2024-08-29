@@ -71,6 +71,18 @@ class DiaryViewController: BaseViewController {
         label.font = UIFont(name: fontName, size: 35)
         label.textColor = .baseColor
         
+        let style = NSMutableParagraphStyle()
+        
+        style.lineSpacing = 6
+        style.paragraphSpacing = 12
+        style.alignment = .left
+        
+        let attributedString = NSMutableAttributedString(string: label.text ?? "")
+        
+        attributedString.addAttributes([.font: UIFont(name: fontName, size: 35) ?? UIFont.systemFont(ofSize: 35, weight: .semibold), .foregroundColor: UIColor.baseColor, .paragraphStyle: style, ], range: NSRange(location: 0, length: attributedString.length))
+        
+        label.attributedText = attributedString
+        
         return label
     }()
     

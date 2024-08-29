@@ -23,12 +23,12 @@ class BaseViewController: UIViewController {
         let tabBarAppearance = UITabBarAppearance()
         
         tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [
-            .font: UIFont(name: "RIDIBatang", size: 16)!,
+            .font: UIFont(name: "RIDIBatang", size: 10)!,
             .foregroundColor: UIColor.baseColor
         ]
         
         tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [
-            .font: UIFont(name: "RIDIBatang", size: 16)!,
+            .font: UIFont(name: "RIDIBatang", size: 10)!,
             .foregroundColor: UIColor.baseColor
         ]
         

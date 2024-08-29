@@ -47,9 +47,9 @@ class SettingViewController: BaseViewController {
         
         // 로그아웃 알림 창 추가
         button.addAction(UIAction { [weak self] _ in
-            let alert = UIAlertController(title: nil, message: "로그아웃 할까요?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "로그아웃", message: "로그아웃 버튼을 누르시면 로그아웃이 돼요.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "취소", style: .cancel))
-            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: "로그아웃", style: .destructive, handler: { _ in
                 self?.store.logout() // 로그아웃
                 
                 // SceneDelegate에서 설정한 탭바의 첫 번째 탭(HomeViewController)으로 이동
@@ -57,12 +57,6 @@ class SettingViewController: BaseViewController {
                     tabBarController.selectedIndex = 0  // 첫 번째 탭 선택
                     self?.navigationController?.popToRootViewController(animated: true)
                 }
-                
-                let confirmationAlert = UIAlertController(title: nil, message: "로그아웃 되었습니다!", preferredStyle: .alert)
-                confirmationAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
-                    self?.dismiss(animated: true, completion: nil)
-                }))
-                self?.present(confirmationAlert, animated: true, completion: nil)
             }))
             self?.present(alert, animated: true, completion: nil)
         }, for: .touchUpInside)
@@ -273,7 +267,7 @@ class SettingViewController: BaseViewController {
             pushAlertLabel.topAnchor.constraint(equalTo: alertSeparator.bottomAnchor, constant: 10),
             
             alertInventoryLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            alertInventoryLabel.topAnchor.constraint(equalTo: pushAlertLabel.bottomAnchor, constant: 10),
+            alertInventoryLabel.topAnchor.constraint(equalTo: pushAlertLabel.bottomAnchor, constant: 30),
             
             userControlLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             userControlLabel.topAnchor.constraint(equalTo: alertInventoryLabel.bottomAnchor, constant: 40),
@@ -287,7 +281,7 @@ class SettingViewController: BaseViewController {
             userInfoEditLabel.topAnchor.constraint(equalTo: userControlSeparator.bottomAnchor, constant: 10),
             
             userInfoDeleteLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            userInfoDeleteLabel.topAnchor.constraint(equalTo: userInfoEditLabel.bottomAnchor, constant: 10),
+            userInfoDeleteLabel.topAnchor.constraint(equalTo: userInfoEditLabel.bottomAnchor, constant: 30),
             
             endSeparator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             endSeparator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),

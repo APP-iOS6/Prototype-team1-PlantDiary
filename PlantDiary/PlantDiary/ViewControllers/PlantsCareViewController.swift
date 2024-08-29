@@ -25,6 +25,55 @@ enum Month: String, CaseIterable {
 class PlantsCareViewController: BaseViewController {
     private var verticalSpacing: CGFloat = 60
     private let horizontalSpacing: CGFloat = 30
+    private var years: [Int] = [Int](2024...9999)
+    private var currentYearIndex = 0
+    
+    private lazy var leftButton: UIButton = {
+        let button = UIButton()
+        
+        button.setTitle("◀︎", for: .normal)
+        button.setTitleColor(.baseColor, for: .normal)
+        button.addAction(UIAction { [weak self] _ in
+            self?.decreaseYear()
+        }, for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var yearLabel: UILabel = {
+        let label = UILabel()
+        
+        label.font = UIFont(name: fontName, size: 20)
+        label.textColor = .baseColor
+        
+        let yearFormat = DateFormatter()
+        yearFormat.dateFormat = "YYYY"
+        
+        label.text = "\(yearFormat.string(from: Date()))년"
+        
+        return label
+    }()
+    
+    private lazy var rightButton: UIButton = {
+        let button = UIButton()
+        
+        button.setTitle("▶︎", for: .normal)
+        button.setTitleColor(.baseColor, for: .normal)
+        button.addAction(UIAction { [weak self] _ in
+            self?.increaseYear()
+        }, for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var hstackView : UIStackView = {
+        let stackView = UIStackView()
+        
+        stackView.axis = .horizontal
+        stackView.spacing = 15
+        
+        return stackView
+    }()
     
     private lazy var collectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
@@ -44,6 +93,14 @@ class PlantsCareViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let swipeLeftGestureReconizer = UISwipeGestureRecognizer(target: self, action: #selector(increaseYear))
+        swipeLeftGestureReconizer.direction = .left
+        collectionView.addGestureRecognizer(swipeLeftGestureReconizer)
+        
+        let swipeRightGestureReconizer = UISwipeGestureRecognizer(target: self, action: #selector(decreaseYear))
+        swipeRightGestureReconizer.direction = .right
+        collectionView.addGestureRecognizer(swipeRightGestureReconizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,18 +110,61 @@ class PlantsCareViewController: BaseViewController {
     override func setupSubviews() {
         super.setupSubviews()
         
-        view.addSubview(collectionView)
+        hstackView.addArrangedSubviews([leftButton, yearLabel, rightButton])
+        view.addSubviews([hstackView, collectionView])
     }
     
     override func setupLayout() {
         super.setupLayout()
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            yearLabel.heightAnchor.constraint(equalToConstant: 50),
+            
+            leftButton.heightAnchor.constraint(equalToConstant: 50),
+            leftButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            rightButton.heightAnchor.constraint(equalToConstant: 50),
+            rightButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            hstackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            hstackView.heightAnchor.constraint(equalToConstant: 20),
+            hstackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: hstackView.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])
+    }
+    
+    @objc func decreaseYear() {
+        if currentYearIndex > 0 {
+            currentYearIndex -= 1
+            animateCollectionView()
+            yearLabel.text = "\(years[currentYearIndex])년"
+            updateCollectionViewForCurrentYear()
+        }
+    }
+    
+    @objc func increaseYear() {
+        if currentYearIndex < years.count - 1 {
+            currentYearIndex += 1
+            animateCollectionView()
+            yearLabel.text = "\(years[currentYearIndex])년"
+            updateCollectionViewForCurrentYear()
+        }
+    }
+    
+    func updateCollectionViewForCurrentYear() {
+        collectionView.reloadData()
+    }
+    
+    func animateCollectionView() {
+        let transitionOptions: UIView.AnimationOptions = .transitionCrossDissolve
+        
+        UIView.transition(with: collectionView, duration: 0.5, options: transitionOptions, animations: {
+            self.collectionView.reloadData()
+        }, completion: nil)
     }
 }
 
@@ -77,6 +177,10 @@ extension PlantsCareViewController: UICollectionViewDelegateFlowLayout, UICollec
     // TODO: 월별 기른 식물 이미지 넣어주기 - 나중엔 사용자가 월별 식물 이름을 붙여줄 수 있어도 좋을거 같아요 ex) 일월이, 새싹이 ...
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath)
+        for subview in cell.subviews {
+            subview.removeFromSuperview()
+        }
+        
         let stackView: UIStackView = UIStackView()
         
         stackView.frame = cell.bounds
@@ -89,9 +193,9 @@ extension PlantsCareViewController: UICollectionViewDelegateFlowLayout, UICollec
         // 데이터 있는 경우에만 이미지 띄워주고 나머진 Questionmark로 구분
         // 4월에만 데이터 있다고 가정할게요!
         // 추후엔 데이터 유무로 분기처리
-        if indexPath.row == 3 {
+        if indexPath.row == 3 && yearLabel.text == "2024년" {
             imageView.image = UIImage(named: "DummyPlant")
-        } else if indexPath.row == 5{
+        } else if indexPath.row == 5 && yearLabel.text == "2025년"{
             imageView.image = UIImage(named: "WitherPlant")
         } else {
             imageView.image = UIImage(systemName: "leaf.fill")
@@ -122,10 +226,10 @@ extension PlantsCareViewController: UICollectionViewDelegateFlowLayout, UICollec
         // 데이터가 있는 경우 각 일지를 띄워준다
         // 4월에만 데이터 있다고 가정할게요!
         // 추후엔 데이터 유무로 분기처리
-        if indexPath.row == 3 || indexPath.row == 6 {
+        if indexPath.row == 3 || indexPath.row == 6 && yearLabel.text == "2024년" {
             plantDiaryViewController.modalPresentationStyle = .pageSheet
             self.present(plantDiaryViewController, animated: true)
-        } else if indexPath.row == 5 {
+        } else if indexPath.row == 5 && yearLabel.text == "2025년"{
             plantDiaryViewController.modalPresentationStyle = .pageSheet
             self.present(plantDiaryViewController, animated: true)
         }

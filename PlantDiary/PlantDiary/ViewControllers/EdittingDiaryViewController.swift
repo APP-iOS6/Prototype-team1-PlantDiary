@@ -65,17 +65,8 @@ class EdittingDiaryViewController: BaseViewController {
         button.setTitleColor(.baseColor, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
-            let alert = UIAlertController(title: nil, message: "저장할까요?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "취소", style: .cancel))
-            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
-                let confirmationAlert = UIAlertController(title: nil, message: "저장 되었습니다!", preferredStyle: .alert)
-                confirmationAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
-                    self?.addDiary?()
-                    self?.dismiss(animated: true, completion: nil)
-                }))
-                self?.present(confirmationAlert, animated: true, completion: nil)
-            }))
-            self?.present(alert, animated: true, completion: nil)
+            self?.addDiary?()
+            self?.dismiss(animated: true, completion: nil)
         }, for: .touchUpInside)
         
         return button
@@ -89,7 +80,7 @@ class EdittingDiaryViewController: BaseViewController {
         button.titleLabel?.font = UIFont(name: fontName, size: 18)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
-            let alert = UIAlertController(title: nil, message: "일지 작성을 취소할까요?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "일기 쓰기 취소", message: "취소를 하시면 작성하시던 일지 내용이 삭제돼요.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "취소", style: .cancel))
             alert.addAction(UIAlertAction(title: "확인", style: .destructive, handler: { _ in
                 self?.dismiss(animated: true, completion: nil)
@@ -129,7 +120,7 @@ class EdittingDiaryViewController: BaseViewController {
         
         hStackView.addArrangedSubviews([cancelButton, saveButton])
         
-        view.addSubviews([hStackView, textView, placeholderLabel])
+        view.addSubviews([hStackView, placeholderLabel, textView])
     }
     
     override func setupLayout() {
@@ -140,24 +131,14 @@ class EdittingDiaryViewController: BaseViewController {
             hStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             hStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             
-//            titleLabel.leadingAnchor.constraint(equalTo: textView.leadingAnchor),
-//            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-//            titleLabel.heightAnchor.constraint(equalToConstant: 50),
-//            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
-//            textView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 10),
-//            textView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -10),
-//            textView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 10),
-//            textView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
+            placeholderLabel.topAnchor.constraint(equalTo: textView.topAnchor, constant: 8),
+            placeholderLabel.leadingAnchor.constraint(equalTo: textView.leadingAnchor, constant: 5),
+            placeholderLabel.trailingAnchor.constraint(equalTo: textView.trailingAnchor, constant: -5),
             
             textView.topAnchor.constraint(equalTo: hStackView.bottomAnchor, constant: 20),
             textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            
-            placeholderLabel.topAnchor.constraint(equalTo: textView.topAnchor, constant: 8),
-            placeholderLabel.leadingAnchor.constraint(equalTo: textView.leadingAnchor, constant: 5),
-            placeholderLabel.trailingAnchor.constraint(equalTo: textView.trailingAnchor, constant: -5),
+            textView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -20),
         ])
     }
     
