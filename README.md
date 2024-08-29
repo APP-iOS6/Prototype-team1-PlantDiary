@@ -114,7 +114,8 @@
 
 # 실행 화면
 
-![Simulator Screen Recording - iPhone 15 Pro - 2024-08-28 at 17 53 36](https://github.com/user-attachments/assets/cd089c94-aa48-410e-8c50-0eeb5eb94d5f)
+![Simulator Screen Recording - iPhone 15 Pro - 2024-08-29 at 13 51 35](https://github.com/user-attachments/assets/81c9d0a7-7d1e-4650-bcd1-9d49f3356f38)
+
 
 # 디자인 툴
 https://excalidraw.com/#room=f3f033323989d12153c3,lC9DcBrM-lRSFE7e-gjknQ
