@@ -80,6 +80,7 @@
 <img src="https://github.com/user-attachments/assets/cd9c4416-e00c-483c-be00-cb624828460c">
 
 <br>
+
 - 글 왼쪽 여백이 의도하겠금 만든 게 아니라면, 레이아웃이 실수한 것처럼 보일 수 있다.
 
 - 특정 버튼을 통해 로그인 화면으로 이동해야지, 아니라면 좀 이상하다. (바탕에 다 씌우지말 것.)
@@ -91,15 +92,22 @@
 
 <img style="margin-left: 30px;" width="200" src = "https://github.com/user-attachments/assets/aec60410-aeb9-44be-adeb-bdd4b999c322">
 <br>
+
 - alert에서 확인 → 로그아웃(빨간색)으로 바꾼다.
- 그리고 로그아웃한 후 또 alert이 뜨게하지 말 것
+  그리고 로그아웃한 후 또 alert이 뜨게하지 말 것
 
 <br>
+
 - 탭바 레이블 작게
+
 - 날짜 행간 자간보다 넓게
+  
 - Alert 멘트 추가
+  
 - 이 전 년도 데이터 추가
+  
 - 동작 버튼 간격 조절
+  
 - 로그아웃 시 색깔과 로그아웃 관련 레이블 사용 
 
 <hr>
