@@ -16,10 +16,10 @@
 - (iOS: 17.5)
 
 # 개발자
-- 신현우
-- 이소영
-- 이주노
-- 김종혁
+- 신현우 - https://github.com/show2633
+- 이소영 - https://github.com/Leesooooyoung
+- 이주노 - https://github.com/Juno730
+- 김종혁 - https://github.com/bbell428
 
 # Progress
 <img src = "https://github.com/user-attachments/assets/7c91b587-c10a-4281-b940-7ce89abd1037">
