@@ -28,8 +28,7 @@
 
 <img src = "https://github.com/user-attachments/assets/9531d0d5-012d-4c7f-bb51-717b424afcc6">
 
-# Feedback
-### Questions
+# Advice (feet. Other Team)
 
 - 다이어리에서 글을 작성하면 해당 날짜에 글을 작성했다는 표시가 나타났으면 함.
 
