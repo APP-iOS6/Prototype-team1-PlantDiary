@@ -87,7 +87,7 @@
 
 - alert은 정말 경고? 느낌으로 쓰는 거지 자주 쓰는 것이 아니다. & 일지 작성 취소버튼 같은 경우 쓴다( 저장 안하면 데이터가 삭제될 수 있으니 사용)
 
-<img width="87" src = "https://github.com/user-attachments/assets/aec60410-aeb9-44be-adeb-bdd4b999c322">
+<img width="200" src = "https://github.com/user-attachments/assets/aec60410-aeb9-44be-adeb-bdd4b999c322">
 
 - alert에서 확인 → 로그아웃(빨간색)으로 바꾼다.
  그리고 로그아웃한 후 또 alert이 뜨게하지 말 것
