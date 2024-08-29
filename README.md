@@ -28,7 +28,7 @@
 
 <img src = "https://github.com/user-attachments/assets/9531d0d5-012d-4c7f-bb51-717b424afcc6">
 
-# Advice (feet. Other Team)
+# Advice (feat. Other Team)
 
 - 다이어리에서 글을 작성하면 해당 날짜에 글을 작성했다는 표시가 나타났으면 함.
 
@@ -70,7 +70,7 @@
 
 <hr>
 
-# UX Feedback (feet. Tuna)
+# UX Feedback (feat. Tuna)
 
 - 앱 실행 시 인트로 약 3초간 뜨는데, 의미가 없다면 일단 빼는 게 좋다. 
   보통 통신이 일어나는 시간을 대체하기위해 보여준다. 
