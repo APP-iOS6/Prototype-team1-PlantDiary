@@ -77,7 +77,8 @@
   보통 통신이 일어나는 시간을 대체하기위해 보여준다. 
   사람들의 기억은 앱을 하면서 느끼는데, 저런 인트로는 시간을 뺏는 부분일 수도 있다.
 
-<img width="209" src = "https://github.com/user-attachments/assets/cd9c4416-e00c-483c-be00-cb624828460c">
+<img src="https://github.com/user-attachments/assets/cd9c4416-e00c-483c-be00-cb624828460c" style="padding-left: 320px;">
+
 
 - 글 왼쪽 여백이 의도하겠금 만든 게 아니라면, 레이아웃이 실수한 것처럼 보일 수 있다.
 
