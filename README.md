@@ -76,9 +76,10 @@
   보통 통신이 일어나는 시간을 대체하기위해 보여준다. 
   사람들의 기억은 앱을 하면서 느끼는데, 저런 인트로는 시간을 뺏는 부분일 수도 있다.
 
+<br>
 <img src="https://github.com/user-attachments/assets/cd9c4416-e00c-483c-be00-cb624828460c">
 
-
+<br>
 - 글 왼쪽 여백이 의도하겠금 만든 게 아니라면, 레이아웃이 실수한 것처럼 보일 수 있다.
 
 - 특정 버튼을 통해 로그인 화면으로 이동해야지, 아니라면 좀 이상하다. (바탕에 다 씌우지말 것.)
@@ -86,13 +87,14 @@
 - 일지작성에서 저장할 때 (확인)알림을 띄우지 말것.
 
 - alert은 정말 경고? 느낌으로 쓰는 거지 자주 쓰는 것이 아니다. & 일지 작성 취소버튼 같은 경우 쓴다( 저장 안하면 데이터가 삭제될 수 있으니 사용)
+<br>
 
-<img width="200" src = "https://github.com/user-attachments/assets/aec60410-aeb9-44be-adeb-bdd4b999c322">
-
+<img style="margin-left: 30px;" width="200" src = "https://github.com/user-attachments/assets/aec60410-aeb9-44be-adeb-bdd4b999c322">
+<br>
 - alert에서 확인 → 로그아웃(빨간색)으로 바꾼다.
  그리고 로그아웃한 후 또 alert이 뜨게하지 말 것
 
-
+<br>
 - 탭바 레이블 작게
 - 날짜 행간 자간보다 넓게
 - Alert 멘트 추가
