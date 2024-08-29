@@ -22,17 +22,14 @@
 - 김종혁
 
 # Progress
-![스크린샷 2024-08-28 오전 10.08.17.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c69962b0-3951-485b-b10a-5bb29576bba8/ebaa2c5f-35f7-4679-83b2-2362ad9b4296/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-08-28_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.08.17.png)
+<img src = "https://github.com/user-attachments/assets/7c91b587-c10a-4281-b940-7ce89abd1037">
 
-![스크린샷 2024-08-28 오전 10.07.52.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c69962b0-3951-485b-b10a-5bb29576bba8/80995702-c4ed-40a2-92dd-1497b6ccf646/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-08-28_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.07.52.png)
+<img src = "https://github.com/user-attachments/assets/7be5f68d-ade2-41fc-a52f-72afba6348d2">
 
-![스크린샷 2024-08-28 오전 10.08.09.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c69962b0-3951-485b-b10a-5bb29576bba8/30b89869-592a-4166-8758-696dc699c4d1/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-08-28_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.08.09.png)
-
-
+<img src = "https://github.com/user-attachments/assets/9531d0d5-012d-4c7f-bb51-717b424afcc6">
 
 # Feedback
-
-## Questions
+### Questions
 
 - 다이어리에서 글을 작성하면 해당 날짜에 글을 작성했다는 표시가 나타났으면 함.
 
@@ -49,7 +46,7 @@
 - 로그아웃 버튼 색상이 너무 빨개요.
 
 
-# 해결 순위
+### 해결 순위
 
 1. 다이어리에서 글을 작성하면 해당 날짜에 글을 작성했다는 표시가 나타났으면 함.
 
@@ -58,7 +55,7 @@
 3. 로그아웃 버튼 색상이 너무 빨개요.
 
 
-# 해결
+### 해결
 
 - 감정 분석 결과에서 sheet가 뜨는데, 창 닫는 버튼이 ‘새로고침’이기에 빼거나 혹은 바꿔주셨으면 합니다.
     -> 새로고침 버튼을 제거했습니다.
@@ -80,8 +77,7 @@
   보통 통신이 일어나는 시간을 대체하기위해 보여준다. 
   사람들의 기억은 앱을 하면서 느끼는데, 저런 인트로는 시간을 뺏는 부분일 수도 있다.
 
-
-![스크린샷 2024-08-29 오전 10.11.15.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c69962b0-3951-485b-b10a-5bb29576bba8/45f55fd0-580b-4ea6-9e15-c4c1ab82c4b5/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-08-29_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.11.15.png)
+<img width="209" src = "https://github.com/user-attachments/assets/cd9c4416-e00c-483c-be00-cb624828460c">
 
 - 글 왼쪽 여백이 의도하겠금 만든 게 아니라면, 레이아웃이 실수한 것처럼 보일 수 있다.
 
@@ -91,8 +87,7 @@
 
 - alert은 정말 경고? 느낌으로 쓰는 거지 자주 쓰는 것이 아니다. & 일지 작성 취소버튼 같은 경우 쓴다( 저장 안하면 데이터가 삭제될 수 있으니 사용)
 
-
-![스크린샷 2024-08-29 오전 10.27.41.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c69962b0-3951-485b-b10a-5bb29576bba8/a0c3cc0c-d01b-45c3-9aca-19f3a1b5019e/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-08-29_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.27.41.png)
+<img width="87" src = "https://github.com/user-attachments/assets/aec60410-aeb9-44be-adeb-bdd4b999c322">
 
 - alert에서 확인 → 로그아웃(빨간색)으로 바꾼다.
  그리고 로그아웃한 후 또 alert이 뜨게하지 말 것
