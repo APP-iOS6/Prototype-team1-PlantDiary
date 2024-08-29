@@ -1,3 +1,6 @@
+# App Icon
+![AppIcon](https://github.com/user-attachments/assets/95e77acb-f7e4-4911-a524-0e90d8ebda3f)
+
 # Plant Diary
 나의 일기에서 묻어나온 감정을 AI에게 분석시켜 나온 결과에 따라 자라나는 식물을 관리하는 앱
 
