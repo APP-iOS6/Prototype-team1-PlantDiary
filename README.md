@@ -102,12 +102,12 @@
 
 <hr>
 
-# 디자인 툴
-https://excalidraw.com/#room=f3f033323989d12153c3,lC9DcBrM-lRSFE7e-gjknQ
-
 # 실행 화면
 
 ![Simulator Screen Recording - iPhone 15 Pro - 2024-08-28 at 17 53 36](https://github.com/user-attachments/assets/cd089c94-aa48-410e-8c50-0eeb5eb94d5f)
+
+# 디자인 툴
+https://excalidraw.com/#room=f3f033323989d12153c3,lC9DcBrM-lRSFE7e-gjknQ
 
 
 # 라이선스
